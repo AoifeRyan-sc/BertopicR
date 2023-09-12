@@ -468,7 +468,6 @@ Topic name:"
 #' @param nr_samples Number of sample documents from which the representative docs are chosen
 #' @param nr_repr_docs Number of representative documents to be sent to the huggingface model
 #' @param diversity diversity of documents to be sent to the huggingface model. 0 = no diversity, 1 = max diversity. 
-
 #'
 #' @return updated representation of each topic
 #' @export

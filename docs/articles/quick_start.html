@@ -38,13 +38,8 @@
 <li class="nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
-<li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/manipulating-the-model.html">Manipulating the Model</a>
-    <a class="dropdown-item" href="../articles/modular_approach.html">Interacting with individaul modules</a>
-    <a class="dropdown-item" href="../articles/quick_start.html">Quick Start</a>
-  </div>
+<li class="active nav-item">
+  <a class="nav-link" href="../articles/index.html">Articles</a>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
@@ -66,7 +61,7 @@
       <img src="" class="logo" alt=""><h1>Quick Start</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/AoifeRyan-sc/BertopicR/tree/fixing-main-branchvignettes/quick_start.Rmd" class="external-link"><code>vignettes/quick_start.Rmd</code></a></small>
       <div class="d-none name"><code>quick_start.Rmd</code></div>
     </div>
 
@@ -131,11 +126,11 @@ not returned as the function changes the input model.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/bt_fit_model.html">bt_fit_model</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">sentences</span><span class="op">)</span></span>
 <span><span class="co">#&gt; UMAP(low_memory=False, min_dist=0.0, n_components=5, random_state=42, verbose=True)</span></span>
-<span><span class="co">#&gt; Tue Sep 12 11:46:13 2023 Construct fuzzy simplicial set</span></span>
-<span><span class="co">#&gt; Tue Sep 12 11:46:14 2023 Finding Nearest Neighbors</span></span>
-<span><span class="co">#&gt; Tue Sep 12 11:46:15 2023 Finished Nearest Neighbor Search</span></span>
-<span><span class="co">#&gt; Tue Sep 12 11:46:16 2023 Construct embedding</span></span>
-<span><span class="co">#&gt; Tue Sep 12 11:46:17 2023 Finished embedding</span></span>
+<span><span class="co">#&gt; Tue Sep 12 15:04:11 2023 Construct fuzzy simplicial set</span></span>
+<span><span class="co">#&gt; Tue Sep 12 15:04:11 2023 Finding Nearest Neighbors</span></span>
+<span><span class="co">#&gt; Tue Sep 12 15:04:13 2023 Finished Nearest Neighbor Search</span></span>
+<span><span class="co">#&gt; Tue Sep 12 15:04:14 2023 Construct embedding</span></span>
+<span><span class="co">#&gt; Tue Sep 12 15:04:16 2023 Finished embedding</span></span>
 <span></span>
 <span><span class="va">model</span><span class="op">$</span><span class="fu">get_topic_info</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">Representative_Docs</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    Topic Count                       Name</span></span>

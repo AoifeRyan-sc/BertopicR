@@ -1,4 +1,74 @@
-url: https://aoiferyan-sc.github.io/BertopicR/
+reference:
+- title: "Library Setup"
+  desc: "Functions for setting up BertopicR"
+  contents:
+  - check_python_dependencies
+  - install_python_dependencies
+- title: "Embedding Documents"
+  desc: "Functions for creating and manipulating document embeddings."
+  contents:
+  - bt_make_embedder
+  - bt_do_embedding
+  - bt_make_reducer_umap
+  - bt_make_reducer_pca
+  - bt_make_reducer_truncated_svd
+  - bt_do_reducing
+- title: "Clustering"
+  desc: "Functions for clustering embedded documents"
+  contents:
+  - bt_make_clusterer_hdbscan
+  - bt_make_clusterer_kmeans
+  - bt_make_clusterer_agglomerative
+  - bt_make_clusterer
+  - bt_do_clustering
+- title: "Tokenise"
+  desc: "Functions for tokenising document words/phrases in order to represent topics"
+  contents:
+  - bt_make_vectoriser
+  - bt_make_ctfidf
+- title: "Build Model"
+  desc: "Functions for compiling and buiding model"
+  contents:
+  - bt_compile_model
+  - bt_fit_model
+  - bt_update_topics
+- title: "Representation"
+  desc: "Functions for clustering embedded documents"
+  contents:
+  - bt_representation_mmr
+  - bt_representation_keybert
+  - bt_representation_openai
+  - bt_representation_hf
+- title: "Topic Manipulation"
+  desc: "Functions for merging topics and reducing outliers"
+  contents:
+  - bt_merge_topics
+  - bt_outliers_embeddings
+  - bt_outliers_tokenset_similarity
+  - bt_outliers_ctfidf
+- title: "Empty Models"
+  desc: "Functions for creating empty instances of models"
+  contents:
+  - bt_empty_clusterer
+  - bt_empty_embedder
+  - bt_empty_reducer
+- title: "Detaching Bertopic"
+  desc: "Functions for detaching python bertopic library"
+  contents:
+  - bertopic_detach
+  
+articles:
+- title: 
+  contents:
+  - modular_approach
+  - manipulating-the-model
+  - quick_start
+
+repo:
+  url: 
+    home: https://aoiferyan-sc.github.io/BertopicR/
+    source: https://github.com/AoifeRyan-sc/BertopicR/tree/fixing-main-branch
+
 template:
   bootstrap: 5
 

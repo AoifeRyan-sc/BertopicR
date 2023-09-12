@@ -21,13 +21,8 @@
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
-<li class="nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/manipulating-the-model.html">Manipulating the Model</a>
-    <a class="dropdown-item" href="../articles/modular_approach.html">Interacting with individaul modules</a>
-    <a class="dropdown-item" href="../articles/quick_start.html">Quick Start</a>
-  </div>
+<li class="nav-item">
+  <a class="nav-link" href="../articles/index.html">Articles</a>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
@@ -43,9 +38,9 @@
     </div>
 
     <div class="section level2">
-      <h2 id="all-functions">All functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
+      <h2 id="library-setup">Library Setup<a class="anchor" aria-label="anchor" href="#library-setup"></a></h2>
       
-      
+      <p class="section-desc"></p><p>Functions for setting up BertopicR</p>
 
       
     </div><div id="" class="section level2">
@@ -55,19 +50,30 @@
 
       <dl><dt>
           
-          <code><a href="bertopic_detach.html">bertopic_detach()</a></code> 
+          <code><a href="check_python_dependencies.html">check_python_dependencies()</a></code> 
         </dt>
-        <dd>Detach bertopic from the python session</dd>
+        <dd>Check that dependencies are loaded</dd>
       </dl><dl><dt>
           
-          <code><a href="bt_compile_model.html">bt_compile_model()</a></code> 
+          <code><a href="install_python_dependencies.html">install_python_dependencies()</a></code> 
         </dt>
-        <dd>Build a BERTopic model</dd>
-      </dl><dl><dt>
+        <dd>Install Python Dependencies</dd>
+      </dl></div><div class="section level2">
+      <h2 id="embedding-documents">Embedding Documents<a class="anchor" aria-label="anchor" href="#embedding-documents"></a></h2>
+      
+      <p class="section-desc"></p><p>Functions for creating and manipulating document embeddings.</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
           
-          <code><a href="bt_do_clustering.html">bt_do_clustering()</a></code> 
+          <code><a href="bt_make_embedder.html">bt_make_embedder()</a></code> 
         </dt>
-        <dd>Cluster your data</dd>
+        <dd>Create an embedding model</dd>
       </dl><dl><dt>
           
           <code><a href="bt_do_embedding.html">bt_do_embedding()</a></code> 
@@ -75,10 +81,181 @@
         <dd>Embed your documents</dd>
       </dl><dl><dt>
           
+          <code><a href="bt_make_reducer_umap.html">bt_make_reducer_umap()</a></code> 
+        </dt>
+        <dd>Create umap dimensionality reduction model</dd>
+      </dl><dl><dt>
+          
+          <code><a href="bt_make_reducer_pca.html">bt_make_reducer_pca()</a></code> 
+        </dt>
+        <dd>Create pca dimensionality reduction model</dd>
+      </dl><dl><dt>
+          
+          <code><a href="bt_make_reducer_truncated_svd.html">bt_make_reducer_truncated_svd()</a></code> 
+        </dt>
+        <dd>Created Truncated SVD dimensionality reduction model</dd>
+      </dl><dl><dt>
+          
           <code><a href="bt_do_reducing.html">bt_do_reducing()</a></code> 
         </dt>
         <dd>Perform dimensionality reduction on your embeddings</dd>
+      </dl></div><div class="section level2">
+      <h2 id="clustering">Clustering<a class="anchor" aria-label="anchor" href="#clustering"></a></h2>
+      
+      <p class="section-desc"></p><p>Functions for clustering embedded documents</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="bt_make_clusterer_hdbscan.html">bt_make_clusterer_hdbscan()</a></code> 
+        </dt>
+        <dd>Create an HDBSCAN clustering model</dd>
       </dl><dl><dt>
+          
+          <code><a href="bt_make_clusterer_kmeans.html">bt_make_clusterer_kmeans()</a></code> 
+        </dt>
+        <dd>Create a kmeans clustering model</dd>
+      </dl><dl><dt>
+          
+          <code><a href="bt_make_clusterer_agglomerative.html">bt_make_clusterer_agglomerative()</a></code> 
+        </dt>
+        <dd>Create an Agglomerative Clustering clustering model</dd>
+      </dl><dl><dt>
+          
+          <code><a href="bt_make_clusterer.html">bt_make_clusterer()</a></code> 
+        </dt>
+        <dd>Create a clustering model</dd>
+      </dl><dl><dt>
+          
+          <code><a href="bt_do_clustering.html">bt_do_clustering()</a></code> 
+        </dt>
+        <dd>Cluster your data</dd>
+      </dl></div><div class="section level2">
+      <h2 id="tokenise">Tokenise<a class="anchor" aria-label="anchor" href="#tokenise"></a></h2>
+      
+      <p class="section-desc"></p><p>Functions for tokenising document words/phrases in order to represent topics</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="bt_make_vectoriser.html">bt_make_vectoriser()</a></code> 
+        </dt>
+        <dd>Create a text vectoriser</dd>
+      </dl><dl><dt>
+          
+          <code><a href="bt_make_ctfidf.html">bt_make_ctfidf()</a></code> 
+        </dt>
+        <dd>Create an instance of the ClassTfidfTransformer from the bertopic.vectorizers module</dd>
+      </dl></div><div class="section level2">
+      <h2 id="build-model">Build Model<a class="anchor" aria-label="anchor" href="#build-model"></a></h2>
+      
+      <p class="section-desc"></p><p>Functions for compiling and buiding model</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="bt_compile_model.html">bt_compile_model()</a></code> 
+        </dt>
+        <dd>Build a BERTopic model</dd>
+      </dl><dl><dt>
+          
+          <code><a href="bt_fit_model.html">bt_fit_model()</a></code> 
+        </dt>
+        <dd>Fit a topic model on your documents &amp; embeddings</dd>
+      </dl><dl><dt>
+          
+          <code><a href="bt_update_topics.html">bt_update_topics()</a></code> 
+        </dt>
+        <dd>Update Topic Representations</dd>
+      </dl></div><div class="section level2">
+      <h2 id="representation">Representation<a class="anchor" aria-label="anchor" href="#representation"></a></h2>
+      
+      <p class="section-desc"></p><p>Functions for clustering embedded documents</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="bt_representation_mmr.html">bt_representation_mmr()</a></code> 
+        </dt>
+        <dd>Create representation model using Maximal Marginal Relevance</dd>
+      </dl><dl><dt>
+          
+          <code><a href="bt_representation_keybert.html">bt_representation_keybert()</a></code> 
+        </dt>
+        <dd>Create representation model using keybert</dd>
+      </dl><dl><dt>
+          
+          <code><a href="bt_representation_openai.html">bt_representation_openai()</a></code> 
+        </dt>
+        <dd>Create representation model that uses OpenAI text generation models</dd>
+      </dl><dl><dt>
+          
+          <code><a href="bt_representation_hf.html">bt_representation_hf()</a></code> 
+        </dt>
+        <dd>Use Huggingface models to create topic representation</dd>
+      </dl></div><div class="section level2">
+      <h2 id="topic-manipulation">Topic Manipulation<a class="anchor" aria-label="anchor" href="#topic-manipulation"></a></h2>
+      
+      <p class="section-desc"></p><p>Functions for merging topics and reducing outliers</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="bt_merge_topics.html">bt_merge_topics()</a></code> 
+        </dt>
+        <dd>Merges list(s) of topics together</dd>
+      </dl><dl><dt>
+          
+          <code><a href="bt_outliers_embeddings.html">bt_outliers_embeddings()</a></code> 
+        </dt>
+        <dd>Redistributes outliers using embeddings</dd>
+      </dl><dl><dt>
+          
+          <code><a href="bt_outliers_tokenset_similarity.html">bt_outliers_tokenset_similarity()</a></code> 
+        </dt>
+        <dd>Redistributes outliers using tokenset c-TF-IDF scores</dd>
+      </dl><dl><dt>
+          
+          <code><a href="bt_outliers_ctfidf.html">bt_outliers_ctfidf()</a></code> 
+        </dt>
+        <dd>Redistributes outliers using c-TF-IDF scores</dd>
+      </dl></div><div class="section level2">
+      <h2 id="empty-models">Empty Models<a class="anchor" aria-label="anchor" href="#empty-models"></a></h2>
+      
+      <p class="section-desc"></p><p>Functions for creating empty instances of models</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
           
           <code><a href="bt_empty_clusterer.html">bt_empty_clusterer()</a></code> 
         </dt>
@@ -93,123 +270,25 @@
           <code><a href="bt_empty_reducer.html">bt_empty_reducer()</a></code> 
         </dt>
         <dd>Create a base reducer for skipping dimensionality reduction step of bertopic pipeline</dd>
-      </dl><dl><dt>
+      </dl></div><div class="section level2">
+      <h2 id="detaching-bertopic">Detaching Bertopic<a class="anchor" aria-label="anchor" href="#detaching-bertopic"></a></h2>
+      
+      <p class="section-desc"></p><p>Functions for detaching python bertopic library</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
           
-          <code><a href="bt_fit_model.html">bt_fit_model()</a></code> 
+          <code><a href="bertopic_detach.html">bertopic_detach()</a></code> 
         </dt>
-        <dd>Fit a topic model on your documents &amp; embeddings</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_fit_transform_model.html">bt_fit_transform_model()</a></code> 
-        </dt>
-        <dd>fit a bertopic model to cleaned data</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_make_clusterer.html">bt_make_clusterer()</a></code> 
-        </dt>
-        <dd>Create a clustering model</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_make_clusterer_agglomerative.html">bt_make_clusterer_agglomerative()</a></code> 
-        </dt>
-        <dd>Create an Agglomerative Clustering clustering model</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_make_clusterer_hdbscan.html">bt_make_clusterer_hdbscan()</a></code> 
-        </dt>
-        <dd>Create an HDBSCAN clustering model</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_make_clusterer_kmeans.html">bt_make_clusterer_kmeans()</a></code> 
-        </dt>
-        <dd>Create a kmeans clustering model</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_make_ctfidf.html">bt_make_ctfidf()</a></code> 
-        </dt>
-        <dd>Create an instance of the ClassTfidfTransformer from the bertopic.vectorizers module</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_make_embedder.html">bt_make_embedder()</a></code> 
-        </dt>
-        <dd>Create an embedding model</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_make_reducer_pca.html">bt_make_reducer_pca()</a></code> 
-        </dt>
-        <dd>Create pca dimensionality reduction model</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_make_reducer_truncated_svd.html">bt_make_reducer_truncated_svd()</a></code> 
-        </dt>
-        <dd>Created Truncated SVD dimensionality reduction model</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_make_reducer_umap.html">bt_make_reducer_umap()</a></code> 
-        </dt>
-        <dd>Create umap dimensionality reduction model</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_make_vectoriser.html">bt_make_vectoriser()</a></code> 
-        </dt>
-        <dd>Create a text vectoriser</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_merge_topics.html">bt_merge_topics()</a></code> 
-        </dt>
-        <dd>Merges list(s) of topics together</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_outliers_ctfidf.html">bt_outliers_ctfidf()</a></code> 
-        </dt>
-        <dd>Redistributes outliers using c-TF-IDF scores</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_outliers_embeddings.html">bt_outliers_embeddings()</a></code> 
-        </dt>
-        <dd>Redistributes outliers using embeddings</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_outliers_tokenset_similarity.html">bt_outliers_tokenset_similarity()</a></code> 
-        </dt>
-        <dd>Redistributes outliers using tokenset c-TF-IDF scores</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_representation_hf.html">bt_representation_hf()</a></code> 
-        </dt>
-        <dd>Use Huggingface models to create topic representation</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_representation_keybert.html">bt_representation_keybert()</a></code> 
-        </dt>
-        <dd>Create representation model using keybert</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_representation_mmr.html">bt_representation_mmr()</a></code> 
-        </dt>
-        <dd>Create representation model using Maximal Marginal Relevance</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_representation_openai.html">bt_representation_openai()</a></code> 
-        </dt>
-        <dd>Create representation model that uses OpenAI text generation models</dd>
-      </dl><dl><dt>
-          
-          <code><a href="bt_update_topics.html">bt_update_topics()</a></code> 
-        </dt>
-        <dd>Update Topic Representations</dd>
-      </dl><dl><dt>
-          
-          <code><a href="check_python_dependencies.html">check_python_dependencies()</a></code> 
-        </dt>
-        <dd>Check that dependencies are loaded</dd>
-      </dl><dl><dt>
-          
-          <code><a href="install_python_dependencies.html">install_python_dependencies()</a></code> 
-        </dt>
-        <dd>Install Python Dependencies</dd>
+        <dd>Detach bertopic from the python session</dd>
       </dl></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">

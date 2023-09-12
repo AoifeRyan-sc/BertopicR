@@ -8,7 +8,7 @@ output:
     highlight: tango
     code_folding: show
 vignette: >
-  %\VignetteIndexEntry{modular_approach}
+  %\VignetteIndexEntry{quick_start}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

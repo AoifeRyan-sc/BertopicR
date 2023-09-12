@@ -1,153 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/404.html</loc>
+    <loc>/404.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/LICENSE-text.html</loc>
+    <loc>/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/LICENSE.html</loc>
+    <loc>/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/articles/bertopic.html</loc>
+    <loc>/articles/bertopic.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/articles/index.html</loc>
+    <loc>/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/articles/manipulating-the-model.html</loc>
+    <loc>/articles/manipulating-the-model.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/articles/modular_approach.html</loc>
+    <loc>/articles/modular_approach.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/articles/quick_start.html</loc>
+    <loc>/articles/quick_start.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/authors.html</loc>
+    <loc>/authors.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/index.html</loc>
+    <loc>/index.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bert_example_data.html</loc>
+    <loc>/reference/bert_example_data.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bertopic_detach.html</loc>
+    <loc>/reference/bertopic_detach.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_base_clusterer.html</loc>
+    <loc>/reference/bt_base_clusterer.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_base_embedder.html</loc>
+    <loc>/reference/bt_base_embedder.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_base_reducer.html</loc>
+    <loc>/reference/bt_base_reducer.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_compile_model.html</loc>
+    <loc>/reference/bt_compile_model.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_do_clustering.html</loc>
+    <loc>/reference/bt_do_clustering.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_do_embedding.html</loc>
+    <loc>/reference/bt_do_embedding.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_do_reducing.html</loc>
+    <loc>/reference/bt_do_reducing.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_empty_clusterer.html</loc>
+    <loc>/reference/bt_empty_clusterer.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_empty_embedder.html</loc>
+    <loc>/reference/bt_empty_embedder.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_empty_reducer.html</loc>
+    <loc>/reference/bt_empty_reducer.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_fit_model.html</loc>
+    <loc>/reference/bt_fit_model.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_fit_transform_model.html</loc>
+    <loc>/reference/bt_fit_transform_model.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_make_clusterer.html</loc>
+    <loc>/reference/bt_make_clusterer.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_make_clusterer_agglomerative.html</loc>
+    <loc>/reference/bt_make_clusterer_agglomerative.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_make_clusterer_hdbscan.html</loc>
+    <loc>/reference/bt_make_clusterer_hdbscan.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_make_clusterer_kmeans.html</loc>
+    <loc>/reference/bt_make_clusterer_kmeans.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_make_ctfidf.html</loc>
+    <loc>/reference/bt_make_ctfidf.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_make_df.html</loc>
+    <loc>/reference/bt_make_df.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_make_embedder.html</loc>
+    <loc>/reference/bt_make_embedder.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_make_reducer_pca.html</loc>
+    <loc>/reference/bt_make_reducer_pca.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_make_reducer_truncated_svd.html</loc>
+    <loc>/reference/bt_make_reducer_truncated_svd.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_make_reducer_umap.html</loc>
+    <loc>/reference/bt_make_reducer_umap.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_make_vectoriser.html</loc>
+    <loc>/reference/bt_make_vectoriser.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_merge_topics.html</loc>
+    <loc>/reference/bt_merge_topics.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_outliers_ctfidf.html</loc>
+    <loc>/reference/bt_outliers_ctfidf.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_outliers_embeddings.html</loc>
+    <loc>/reference/bt_outliers_embeddings.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_outliers_tokenset_similarity.html</loc>
+    <loc>/reference/bt_outliers_tokenset_similarity.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_representation_hf.html</loc>
+    <loc>/reference/bt_representation_hf.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_representation_keybert.html</loc>
+    <loc>/reference/bt_representation_keybert.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_representation_mmr.html</loc>
+    <loc>/reference/bt_representation_mmr.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_representation_openai.html</loc>
+    <loc>/reference/bt_representation_openai.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_update_topics.html</loc>
+    <loc>/reference/bt_update_topics.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_viz_diff_terms.html</loc>
+    <loc>/reference/bt_viz_diff_terms.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/bt_viz_top_terms.html</loc>
+    <loc>/reference/bt_viz_top_terms.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/check_python_dependencies.html</loc>
+    <loc>/reference/check_python_dependencies.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/index.html</loc>
+    <loc>/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/install_python_dependencies.html</loc>
+    <loc>/reference/install_python_dependencies.html</loc>
   </url>
   <url>
-    <loc>https://aoiferyan-sc.github.io/BertopicR/reference/pipe.html</loc>
+    <loc>/reference/pipe.html</loc>
   </url>
 </urlset>

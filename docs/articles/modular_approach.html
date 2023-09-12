@@ -38,13 +38,8 @@
 <li class="nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
-<li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/manipulating-the-model.html">Manipulating the Model</a>
-    <a class="dropdown-item" href="../articles/modular_approach.html">Interacting with individaul modules</a>
-    <a class="dropdown-item" href="../articles/quick_start.html">Quick Start</a>
-  </div>
+<li class="active nav-item">
+  <a class="nav-link" href="../articles/index.html">Articles</a>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
@@ -66,7 +61,7 @@
       <img src="" class="logo" alt=""><h1>Interacting with individaul modules</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/AoifeRyan-sc/BertopicR/tree/fixing-main-branchvignettes/modular_approach.Rmd" class="external-link"><code>vignettes/modular_approach.Rmd</code></a></small>
       <div class="d-none name"><code>modular_approach.Rmd</code></div>
     </div>
 
@@ -212,11 +207,11 @@ to non-Euclidean Spaces</a> for alternatives.</p>
 <span>  <span class="va">reducer</span>, embeddings <span class="op">=</span> <span class="va">embeddings</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; UMAP(angular_rp_forest=True, low_memory=False, metric='cosine', min_dist=0, n_components=10, n_neighbors=10, random_state=42, verbose=True)</span></span>
-<span><span class="co">#&gt; Tue Sep 12 11:45:43 2023 Construct fuzzy simplicial set</span></span>
-<span><span class="co">#&gt; Tue Sep 12 11:45:43 2023 Finding Nearest Neighbors</span></span>
-<span><span class="co">#&gt; Tue Sep 12 11:45:44 2023 Finished Nearest Neighbor Search</span></span>
-<span><span class="co">#&gt; Tue Sep 12 11:45:45 2023 Construct embedding</span></span>
-<span><span class="co">#&gt; Tue Sep 12 11:45:46 2023 Finished embedding</span></span>
+<span><span class="co">#&gt; Tue Sep 12 15:03:29 2023 Construct fuzzy simplicial set</span></span>
+<span><span class="co">#&gt; Tue Sep 12 15:03:30 2023 Finding Nearest Neighbors</span></span>
+<span><span class="co">#&gt; Tue Sep 12 15:03:31 2023 Finished Nearest Neighbor Search</span></span>
+<span><span class="co">#&gt; Tue Sep 12 15:03:33 2023 Construct embedding</span></span>
+<span><span class="co">#&gt; Tue Sep 12 15:03:34 2023 Finished embedding</span></span>
 <span></span>
 <span><span class="va">reduced_embeddings</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="op">]</span></span>
 <span><span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]     [,5]     [,6]     [,7]     [,8]</span></span>
@@ -369,21 +364,21 @@ eclectic.</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cluster</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">sentence</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "slide the catch back and open the desk."          </span></span>
-<span><span class="co">#&gt; [2] "slash the gold cloth into fine ribbons."          </span></span>
-<span><span class="co">#&gt; [3] "slide the tray across the glass top."             </span></span>
-<span><span class="co">#&gt; [4] "crack the walnut with your sharp side teeth."     </span></span>
-<span><span class="co">#&gt; [5] "the best method is to fix it in place with clips."</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "twist the valve and release hot steam."         </span></span>
+<span><span class="co">#&gt; [2] "slide the tray across the glass top."           </span></span>
+<span><span class="co">#&gt; [3] "do that with a wooden stick."                   </span></span>
+<span><span class="co">#&gt; [4] "hang tinsel from both branches."                </span></span>
+<span><span class="co">#&gt; [5] "take the match and strike it against your shoe."</span></span></code></pre></div>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cluster</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">sentence</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "the child crawled into the dense grass."   </span></span>
-<span><span class="co">#&gt; [2] "feed the white mouse some flower seeds."   </span></span>
-<span><span class="co">#&gt; [3] "the kitten chased the dog down the street."</span></span>
-<span><span class="co">#&gt; [4] "see the cat glaring at the scared mouse."  </span></span>
-<span><span class="co">#&gt; [5] "the quick fox jumped on the sleeping cat."</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "the kitten chased the dog down the street."</span></span>
+<span><span class="co">#&gt; [2] "the stray cat gave birth to kittens."      </span></span>
+<span><span class="co">#&gt; [3] "see the cat glaring at the scared mouse."  </span></span>
+<span><span class="co">#&gt; [4] "she saw a cat in the neighbor's house."    </span></span>
+<span><span class="co">#&gt; [5] "the hog crawled under the high fence."</span></span></code></pre></div>
 <p>The more clusters we look at, the more difficult it will become to
 figure out what’s happening…</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -391,11 +386,11 @@ figure out what’s happening…</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cluster</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">sentence</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "port is a strong wine with a smoky taste."</span></span>
-<span><span class="co">#&gt; [2] "the slang word for raw whiskey is booze." </span></span>
-<span><span class="co">#&gt; [3] "mince pie is a dish served to children."  </span></span>
-<span><span class="co">#&gt; [4] "fruit flavors are used in fizz drinks."   </span></span>
-<span><span class="co">#&gt; [5] "the fruit of a fig tree is apple shaped."</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "the fruit peel was cut in thick slices."      </span></span>
+<span><span class="co">#&gt; [2] "the fruit of a fig tree is apple shaped."     </span></span>
+<span><span class="co">#&gt; [3] "a ripe plum is fit for a king's palate."      </span></span>
+<span><span class="co">#&gt; [4] "the ripe taste of cheese improves with age."  </span></span>
+<span><span class="co">#&gt; [5] "he sent the figs, but kept the ripe cherries."</span></span></code></pre></div>
 <p>Inspecting each of these clusters and trying to figure out what each
 cluster means and how they inter-relate would soon become intractable
 for humans. Thankfully, within BERTopic there are quantitative methods
