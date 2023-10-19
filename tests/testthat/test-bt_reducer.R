@@ -109,7 +109,7 @@ test_that("bt_embed and bt_reducer work together",{
     dplyr::pull(message)
 
   embedder <- bt_make_embedder_st("all-minilm-l6-v2")
-  embeddings <- bt_do_embedding(embedder = embedder, documents = documents, accelerator = NULL)
+  embeddings <- bt_do_embedding(embedder = embedder, documents = documents)
   reducer <- bt_make_reducer_umap( n_neighbours = 2L, verbose = FALSE)
   reducer_pca <- bt_make_reducer_pca(n_components = 10)
   reduced <- bt_do_reducing(reducer = reducer, embeddings = embeddings )
