@@ -34,14 +34,14 @@ jobs:
           platform: 'aarch64-apple-darwin20'
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: remotes any::pkgdown, local::.
-          needs: website
-
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.config.python }}
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: remotes reticulate any::pkgdown, local::.
+          needs: website
 
       - name: setup env
         shell: Rscript {0}
