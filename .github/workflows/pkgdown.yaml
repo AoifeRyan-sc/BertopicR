@@ -59,10 +59,10 @@ jobs:
             paste0("RETICULATE_PYTHON=", reticulate::virtualenv_python(conda_path)),
             Sys.getenv("GITHUB_ENV"))
 
-      - name: install BertopicR
+      - name: Install BertopicR
         run: |
-          Rscript -e "devtools::install_github('aoiferyan-sc/BertopicR@branching-before-segmentation-error')"
-
+          remotes::install_local(".")  # install the package from the current repository
+        shell: Rscript {0}
 
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
