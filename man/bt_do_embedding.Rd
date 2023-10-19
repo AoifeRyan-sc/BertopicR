@@ -8,7 +8,7 @@ bt_do_embedding(
   embedder,
   documents,
   ...,
-  accelerator = "mps",
+  accelerator = NULL,
   progress_bar = TRUE
 )
 }

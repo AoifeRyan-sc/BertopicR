@@ -251,7 +251,7 @@ bt_make_embedder_openai <- function(model = "text-embedding-ada-002",
 #' 
 #' embeddings <- bt_do_embedding(embedder, docs, accelerator = NULL)
 #' 
-bt_do_embedding <- function(embedder, documents, ..., accelerator = "mps", progress_bar = TRUE) {
+bt_do_embedding <- function(embedder, documents, ..., accelerator = NULL, progress_bar = TRUE) {
   
   # update this to be compatible with compatible embedding models
   # if(!grepl("^sentence_tran",class(embedder)[[1]])){
