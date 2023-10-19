@@ -93,3 +93,4 @@ template:
     pkgdown-nav-height: 100px
   params:
     search: true
+
