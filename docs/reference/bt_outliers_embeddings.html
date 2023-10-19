@@ -33,18 +33,19 @@ itself."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mat
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
-<li class="nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/modular_approach.html">Interacting with Individual Modules</a>
-    <a class="dropdown-item" href="../articles/manipulating-the-model.html">Manipulating the Model</a>
-    <a class="dropdown-item" href="../articles/quick_start.html">Topic Modelling without Optimisation</a>
-  </div>
+<li class="nav-item">
+  <a class="nav-link" href="../articles/index.html">Articles</a>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
-      <ul class="navbar-nav"></ul></div>
+      <ul class="navbar-nav"><li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/AoifeRyan-sc/BertopicR" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul></div>
 
     
   </div>
@@ -52,7 +53,7 @@ itself."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mat
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Redistributes outliers using embeddings</h1>
-      <small class="dont-index">Source: <a href="https://github.com/AoifeRyan-sc/BertopicR/tree/review_updates_12sep2023R/modify_topics.R" class="external-link"><code>R/modify_topics.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/AoifeRyan-sc/BertopicR/tree/branching-before-segmentation-error/R/modify_topics.R" class="external-link"><code>R/modify_topics.R</code></a></small>
       <div class="d-none name"><code>bt_outliers_embeddings.Rd</code></div>
     </div>
 
@@ -109,6 +110,16 @@ itself.</p>
     
 
 <p>df with document, old topic, new topic</p>
+    </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>It is possible to chain outlier reduction methods together as the operation works on
+the list of topics input to the argument, which can vary. You will see in the examples
+that we are able to perform one outlier reduction method, eg. bt_outliers_tokenset_similarity,
+which will output a list of potential new topics, and input that list into another
+outlier reduction method, eg. bt_outliers_embeddings, which will determine the output topic
+suggestions based on the input list. In this way we can use aspects of multiple outlier
+reduction strategies and chain them together.</p>
     </div>
 
     <div class="section level2">

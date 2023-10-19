@@ -38,20 +38,22 @@
 <li class="nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
-<li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/modular_approach.html">Interacting with Individual Modules</a>
-    <a class="dropdown-item" href="../articles/manipulating-the-model.html">Manipulating the Model</a>
-    <a class="dropdown-item" href="../articles/quick_start.html">Topic Modelling without Optimisation</a>
-  </div>
+<li class="active nav-item">
+  <a class="nav-link" href="../articles/index.html">Articles</a>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
 </form>
 
-      <ul class="navbar-nav"></ul>
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/AoifeRyan-sc/BertopicR" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 
     
@@ -66,7 +68,7 @@
       <img src="" class="logo" alt=""><h1>Interacting with Individual Modules</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/AoifeRyan-sc/BertopicR/tree/review_updates_12sep2023vignettes/modular_approach.Rmd" class="external-link"><code>vignettes/modular_approach.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/AoifeRyan-sc/BertopicR/tree/branching-before-segmentation-error/vignettes/modular_approach.Rmd" class="external-link"><code>vignettes/modular_approach.Rmd</code></a></small>
       <div class="d-none name"><code>modular_approach.Rmd</code></div>
     </div>
 
@@ -138,13 +140,13 @@ and then we fit our models to data.</p>
 <h4 id="make-the-embedder">Make the embedder<a class="anchor" aria-label="anchor" href="#make-the-embedder"></a>
 </h4>
 <p>First we’ll make an embedder (or embedding_model) using the
-<code>bt_make_embedder</code> function. Then we’ll embed our sentences
-using the embedder.</p>
+<code>bt_make_embedder_st</code> function. Then we’ll embed our
+sentences using the embedder.</p>
 <p>TIP: It’s a good idea to save your embeddings, as when working with
 many documents this process will be time consuming.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">embedder</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bt_make_embedder.html">bt_make_embedder</a></span><span class="op">(</span></span>
-<span>  model_name <span class="op">=</span> <span class="st">"all-mpnet-base-v2"</span></span>
+<code class="sourceCode R"><span><span class="va">embedder</span> <span class="op">&lt;-</span> <span class="fu">BertopicR</span><span class="fu">::</span><span class="fu"><a href="../reference/bt_make_embedder_st.html">bt_make_embedder_st</a></span><span class="op">(</span></span>
+<span>  model <span class="op">=</span> <span class="st">"all-mpnet-base-v2"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
@@ -153,15 +155,16 @@ many documents this process will be time consuming.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">embeddings</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bt_do_embedding.html">bt_do_embedding</a></span><span class="op">(</span></span>
 <span>  <span class="va">embedder</span>,</span>
-<span>  <span class="va">df</span><span class="op">$</span><span class="va">sentences</span></span>
+<span>  <span class="va">df</span><span class="op">$</span><span class="va">sentences</span>,</span>
+<span>  accelerator <span class="op">=</span> <span class="cn">NULL</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Embedding proccess finished</span></span>
 <span><span class="co">#&gt; all-mpnet-base-v2 added to embeddings attributes</span></span>
 <span></span>
 <span><span class="va">embeddings</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span>
-<span><span class="co">#&gt;  [1]  0.0031732221 -0.0454455651 -0.0003524857  0.0046989759  0.0179691557</span></span>
-<span><span class="co">#&gt;  [6] -0.0300240256 -0.0278541520 -0.0199615341 -0.0032402743  0.0257827863</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1]  0.0031732142 -0.0454455763 -0.0003524652  0.0046989718  0.0179691650</span></span>
+<span><span class="co">#&gt;  [6] -0.0300240479 -0.0278541707 -0.0199615918 -0.0032401842  0.0257827844</span></span></code></pre></div>
 <p>Each row of our embeddings output represents one of our original
 sentences, and each column represents a different embedding dimension;
 there are 768 dimensions outputted by the ‘all-mpnet-base-v2’ mode</p>
@@ -212,16 +215,16 @@ to non-Euclidean Spaces</a> for alternatives.</p>
 <span>  <span class="va">reducer</span>, embeddings <span class="op">=</span> <span class="va">embeddings</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; UMAP(low_memory=False, min_dist=0, n_components=5, n_neighbors=10, random_state=42, verbose=True)</span></span>
-<span><span class="co">#&gt; Fri Sep 15 13:44:10 2023 Construct fuzzy simplicial set</span></span>
-<span><span class="co">#&gt; Fri Sep 15 13:44:11 2023 Finding Nearest Neighbors</span></span>
-<span><span class="co">#&gt; Fri Sep 15 13:44:12 2023 Finished Nearest Neighbor Search</span></span>
-<span><span class="co">#&gt; Fri Sep 15 13:44:13 2023 Construct embedding</span></span>
-<span><span class="co">#&gt; Fri Sep 15 13:44:13 2023 Finished embedding</span></span>
+<span><span class="co">#&gt; Thu Oct 19 17:49:42 2023 Construct fuzzy simplicial set</span></span>
+<span><span class="co">#&gt; Thu Oct 19 17:49:42 2023 Finding Nearest Neighbors</span></span>
+<span><span class="co">#&gt; Thu Oct 19 17:49:43 2023 Finished Nearest Neighbor Search</span></span>
+<span><span class="co">#&gt; Thu Oct 19 17:49:44 2023 Construct embedding</span></span>
+<span><span class="co">#&gt; Thu Oct 19 17:49:45 2023 Finished embedding</span></span>
 <span></span>
 <span><span class="va">reduced_embeddings</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="op">]</span></span>
-<span><span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]     [,5]</span></span>
-<span><span class="co">#&gt; [1,] 6.100185 7.111070 9.751507 8.249320 3.461529</span></span>
-<span><span class="co">#&gt; [2,] 5.065452 9.283411 9.522729 8.027472 5.122230</span></span></code></pre></div>
+<span><span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]      [,5]</span></span>
+<span><span class="co">#&gt; [1,] 5.893695 5.124340 8.918015 8.577352 -1.005369</span></span>
+<span><span class="co">#&gt; [2,] 6.760569 5.225244 6.181620 8.503936 -1.818598</span></span></code></pre></div>
 <p>We’ll take a peek at two of our rows which now represent the reduced
 dimension embeddings for each document. Notice that our numbers are
 floating points, but also that they are not bounded between -1 and
@@ -312,6 +315,7 @@ columns.</p>
 <p>We can see the distribution via a histogram:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: package 'ggplot2' was built under R version 4.3.1</span></span>
 <span></span>
 <span><span class="va">data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cluster</span> <span class="op">!=</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
@@ -327,20 +331,20 @@ order of size:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">cluster</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 58 × 2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 59 × 2</span></span></span>
 <span><span class="co">#&gt;    cluster     n</span></span>
 <span><span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      -<span style="color: #BB0000;">1</span>   192</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      -<span style="color: #BB0000;">1</span>   162</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>       0    22</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>       1    21</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>       2    21</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>       3    20</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>       2    20</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>       3    19</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>       4    18</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>       5    15</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>       5    16</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>       6    15</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>       7    14</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>       8    13</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 48 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>       7    15</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>       8    14</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 49 more rows</span></span></span></code></pre></div>
 <p>213/720 (29.6%) of data points were labelled as noise (cluster ==
 -1), and upon a first inspection they do appear to be quite
 eclectic.</p>
@@ -349,38 +353,38 @@ eclectic.</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cluster</span> <span class="op">==</span> <span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">30</span><span class="op">:</span><span class="fl">40</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">sentence</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "the bill was paid every third week."             </span></span>
-<span><span class="co">#&gt;  [2] "open the crate but don't break the glass."       </span></span>
-<span><span class="co">#&gt;  [3] "thieves who rob friends deserve jail."           </span></span>
-<span><span class="co">#&gt;  [4] "weave the carpet on the right hand side."        </span></span>
-<span><span class="co">#&gt;  [5] "the harder he tried the less he got done."       </span></span>
-<span><span class="co">#&gt;  [6] "the tiny girl took off her hat."                 </span></span>
-<span><span class="co">#&gt;  [7] "a cramp is no small danger on a swim."           </span></span>
-<span><span class="co">#&gt;  [8] "pluck the bright rose without leaves."           </span></span>
-<span><span class="co">#&gt;  [9] "the glow deepened in the eyes of the sweet girl."</span></span>
-<span><span class="co">#&gt; [10] "bring your problems to the wise chief."          </span></span>
-<span><span class="co">#&gt; [11] "write a fond note to the friend you cherish."</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] "clothes and lodging are free to new men."          </span></span>
+<span><span class="co">#&gt;  [2] "a salt pickle tastes fine with ham."               </span></span>
+<span><span class="co">#&gt;  [3] "mud was spattered on the front of his white shirt."</span></span>
+<span><span class="co">#&gt;  [4] "the cigar burned a hole in the desk top."          </span></span>
+<span><span class="co">#&gt;  [5] "the empty flask stood on the tin tray."            </span></span>
+<span><span class="co">#&gt;  [6] "at that high level the air is pure."               </span></span>
+<span><span class="co">#&gt;  [7] "steam hissed from the broken valve."               </span></span>
+<span><span class="co">#&gt;  [8] "the sky that morning was clear and bright blue."   </span></span>
+<span><span class="co">#&gt;  [9] "sunday is the best part of the week."              </span></span>
+<span><span class="co">#&gt; [10] "the third act was dull and tired the players."     </span></span>
+<span><span class="co">#&gt; [11] "corn cobs can be used to kindle a fire."</span></span></code></pre></div>
 <p>But how do our other clusters look?</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cluster</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">sentence</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "the quick fox jumped on the sleeping cat."</span></span>
-<span><span class="co">#&gt; [2] "she saw a cat in the neighbor's house."   </span></span>
-<span><span class="co">#&gt; [3] "dots of light betrayed the black cat."    </span></span>
-<span><span class="co">#&gt; [4] "a toad and a frog are hard to tell apart."</span></span>
-<span><span class="co">#&gt; [5] "it caught its hind paw in a rusty trap."</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "cut the cord that binds the box tightly."       </span></span>
+<span><span class="co">#&gt; [2] "screw the round cap on as tight as needed."     </span></span>
+<span><span class="co">#&gt; [3] "drive the screw straight into the wood."        </span></span>
+<span><span class="co">#&gt; [4] "take the match and strike it against your shoe."</span></span>
+<span><span class="co">#&gt; [5] "fasten two pins on each side."</span></span></code></pre></div>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cluster</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">sentence</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "mince pie is a dish served to children."    </span></span>
-<span><span class="co">#&gt; [2] "ripe pears are fit for a queen's table."    </span></span>
-<span><span class="co">#&gt; [3] "they slice the sausage thin with a knife."  </span></span>
-<span><span class="co">#&gt; [4] "the ripe taste of cheese improves with age."</span></span>
-<span><span class="co">#&gt; [5] "the fruit peel was cut in thick slices."</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "the hog crawled under the high fence."             </span></span>
+<span><span class="co">#&gt; [2] "it takes a good trap to capture a bear."           </span></span>
+<span><span class="co">#&gt; [3] "he crawled with care along the ledge."             </span></span>
+<span><span class="co">#&gt; [4] "the pup jerked the leash as he saw a feline shape."</span></span>
+<span><span class="co">#&gt; [5] "feed the white mouse some flower seeds."</span></span></code></pre></div>
 <p>The more clusters we look at, the more difficult it will become to
 figure out what’s happening…</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -388,11 +392,11 @@ figure out what’s happening…</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cluster</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">sentence</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "split the log with a quick, sharp blow."        </span></span>
-<span><span class="co">#&gt; [2] "sever the twine with a quick snip of the knife."</span></span>
-<span><span class="co">#&gt; [3] "hoist the load to your left shoulder."          </span></span>
-<span><span class="co">#&gt; [4] "loop the braid to the left and then over."      </span></span>
-<span><span class="co">#&gt; [5] "press the pants and sew a button on the vest."</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "the work of the tailor is seen on each side."</span></span>
+<span><span class="co">#&gt; [2] "a gold ring will please most any girl."      </span></span>
+<span><span class="co">#&gt; [3] "the vamp of the shoe had a gold buckle."     </span></span>
+<span><span class="co">#&gt; [4] "she sewed the torn coat quite neatly."       </span></span>
+<span><span class="co">#&gt; [5] "a white silk jacket goes with any shoes."</span></span></code></pre></div>
 <p>Inspecting each of these clusters and trying to figure out what each
 cluster means and how they inter-relate would soon become intractable
 for humans. Thankfully, within BERTopic there are quantitative methods
@@ -469,7 +473,7 @@ us a lot of time, particularly when we have many documents.</p>
 <span><span class="co">#&gt; Model is fitted</span></span>
 <span></span>
 <span><span class="va">topic_model</span><span class="op">$</span><span class="va">topics_</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span>
-<span><span class="co">#&gt;  [1] -1 -1 34 28 28  1 -1 -1 37 -1</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] -1 -1 33 17 17  9 56 14 -1 -1</span></span></code></pre></div>
 <p><strong>NOTE:</strong> The bertopic model you are working with is a
 pointer to a python object at a point in memory. This means that the
 input and the output model cannot be differentiated between without
@@ -501,7 +505,7 @@ bt_fit_model, the output model would be the same as the input model:</p>
 <span><span class="co">#&gt; Model is fitted</span></span>
 <span></span>
 <span><span class="va">example_model_compiled</span><span class="op">$</span><span class="va">topics_</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span>
-<span><span class="co">#&gt;  [1] -1 -1 34 28 28  1 -1 -1 37 -1</span></span>
+<span><span class="co">#&gt;  [1] -1 -1 33 17 17  9 56 14 -1 -1</span></span>
 <span><span class="va">example_model_fitted</span><span class="op">$</span><span class="va">topics_</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span></span>
 <span><span class="co">#&gt; NULL</span></span></code></pre></div>
 <p>We can create a look up table to join our sentences to their topic
@@ -523,16 +527,16 @@ original dataframe:</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 720 × 7</span></span></span>
 <span><span class="co">#&gt;    sentence   topic topic_size description embeddings reduced_embeddings cluster</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> the birch…    -<span style="color: #BB0000;">1</span>        192 -1_night_g… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         -<span style="color: #BB0000;">1</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> glue the …    -<span style="color: #BB0000;">1</span>        192 -1_night_g… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         -<span style="color: #BB0000;">1</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> it's easy…    34          7 34_ice_ste… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         35</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> these day…    28          8 28_rare_se… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         30</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> rice is o…    28          8 28_rare_se… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         30</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> the juice…     1         21 1_port_chi… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>          1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> the box w…    -<span style="color: #BB0000;">1</span>        192 -1_night_g… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         -<span style="color: #BB0000;">1</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> the hogs …    -<span style="color: #BB0000;">1</span>        192 -1_night_g… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         -<span style="color: #BB0000;">1</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> four hour…    37          6 37_stop_st… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         37</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> a large s…    -<span style="color: #BB0000;">1</span>        192 -1_night_g… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         -<span style="color: #BB0000;">1</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> the birch…    -<span style="color: #BB0000;">1</span>        162 -1_deep_ni… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         -<span style="color: #BB0000;">1</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> glue the …    -<span style="color: #BB0000;">1</span>        162 -1_deep_ni… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         -<span style="color: #BB0000;">1</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> it's easy…    33          7 33_pipe_sp… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         35</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> these day…    17         11 17_rare_se… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         21</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> rice is o…    17         11 17_rare_se… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         21</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> the juice…     9         14 9_taste_cu… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         10</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> the box w…    56          5 56_box_squ… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         50</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> the hogs …    14         13 14_spring_… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         12</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> four hour…    -<span style="color: #BB0000;">1</span>        162 -1_deep_ni… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         -<span style="color: #BB0000;">1</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> a large s…    -<span style="color: #BB0000;">1</span>        162 -1_deep_ni… <span style="color: #949494;">&lt;dbl[…]&gt;</span>   <span style="color: #949494;">&lt;dbl [720 × 5]&gt;</span>         -<span style="color: #BB0000;">1</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 710 more rows</span></span></span></code></pre></div>
 <p>The df compiled is a common place for everything we have generated so
 far, in practice we don’t really need the cluster column now that we

@@ -91,6 +91,18 @@
     <loc>/reference/bt_make_embedder.html</loc>
   </url>
   <url>
+    <loc>/reference/bt_make_embedder_flair.html</loc>
+  </url>
+  <url>
+    <loc>/reference/bt_make_embedder_openai.html</loc>
+  </url>
+  <url>
+    <loc>/reference/bt_make_embedder_spacy.html</loc>
+  </url>
+  <url>
+    <loc>/reference/bt_make_embedder_st.html</loc>
+  </url>
+  <url>
     <loc>/reference/bt_make_reducer_pca.html</loc>
   </url>
   <url>

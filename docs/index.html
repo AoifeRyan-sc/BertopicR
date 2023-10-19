@@ -38,20 +38,22 @@
 <li class="nav-item">
   <a class="nav-link" href="reference/index.html">Reference</a>
 </li>
-<li class="nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/modular_approach.html">Interacting with Individual Modules</a>
-    <a class="dropdown-item" href="articles/manipulating-the-model.html">Manipulating the Model</a>
-    <a class="dropdown-item" href="articles/quick_start.html">Topic Modelling without Optimisation</a>
-  </div>
+<li class="nav-item">
+  <a class="nav-link" href="articles/index.html">Articles</a>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
 </form>
 
-      <ul class="navbar-nav"></ul>
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/AoifeRyan-sc/BertopicR" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 
     
@@ -95,7 +97,7 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">BertopicR</span><span class="fu">::</span><span class="va"><a href="reference/bert_example_data.html">bert_example_data</a></span></span>
 <span></span>
-<span><span class="va">embedder</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/bt_make_embedder.html">bt_make_embedder</a></span><span class="op">(</span><span class="st">"all-minilm-l6-v2"</span><span class="op">)</span></span>
+<span><span class="va">embedder</span> <span class="op">&lt;-</span> <span class="fu">bt_make_embedder</span><span class="op">(</span><span class="st">"all-minilm-l6-v2"</span><span class="op">)</span></span>
 <span><span class="va">embeddings</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/bt_do_embedding.html">bt_do_embedding</a></span><span class="op">(</span><span class="va">embedder</span>, documents <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">message</span>,  batch_size <span class="op">=</span> <span class="fl">16L</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Embedding proccess finished</span></span>
@@ -163,7 +165,8 @@
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://aoiferyan-sc.github.io/BertopicR/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/AoifeRyan-sc/BertopicR" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/jpcompartir/BertopicR/issues" class="external-link">Report an issue</a></li>
 </ul>
 </div>
 

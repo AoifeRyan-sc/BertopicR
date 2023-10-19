@@ -237,6 +237,7 @@ Inspecting each of these clusters and trying to figure out what each cluster mea
 
 Instead of looking at the individual posts in each cluster, we'll attempt to summarise their contents with keywords and phrases. In order to this, we'll make a vectoriser and a ctfidf model. After creating these models, we can use everything we've looked at so far to compile a model, fit the model on our data, and finally explore our topics and their representations.
 
+## Adjust the Representation
 ### Make the vectoriser
 For the vectoriser we'll set the ngram range as c(1, 2) this means our topics can be represented as single words or bigrams. We'll set stop_words to 'english' so that English stop words are removed and we'll tell our vectoriser to only consider words that have a frequency of 3 or higher, so that rare words and chance occurrences don't clog our representations too much. In practice, we will want to set a higher value for min_frequency as we'll be working with significantly more data.
 
