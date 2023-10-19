@@ -33,7 +33,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::pkgdown, any::reticulate, local::.
+          extra-packages: any::pkgdown, any::rcmdcheck, any::remotes, any::reticulate, local::.
           needs: website
 
       - uses: actions/setup-python@v4
