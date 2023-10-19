@@ -36,8 +36,8 @@ jobs:
           needs: website
           
       - uses: actions/setup-python@v4
-          with:
-            python-version: ${{ matrix.config.python }}
+        with:
+          python-version: ${{ matrix.config.python }}
       
       
       - name: Setup r-reticulate env
