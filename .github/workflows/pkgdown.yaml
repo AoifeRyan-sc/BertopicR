@@ -39,9 +39,6 @@ jobs:
         with:
           python-version: ${{ matrix.config.python }}
       
-      
-      - name: Setup r-reticulate env
-        shell: Rscript {0} 
       - name: setup env
         shell: Rscript {0}
         run: |
