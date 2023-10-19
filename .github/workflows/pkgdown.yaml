@@ -29,11 +29,11 @@ jobs:
         with:
           r-version: latest
           platform: 'aarch64-apple-darwin20'
-          use-public-rspm: true          
+          use-public-rspm: true      
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::pkgdown, any::rcmdcheck, any::remotes, any::reticulate, local::.
+          extra-packages: any::pkgdown, any::rcmdcheck, any::remotes, any::reticulate
           needs: website
 
       - uses: actions/setup-python@v4
