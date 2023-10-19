@@ -7,7 +7,10 @@ reference:
 - title: "Embedding Documents"
   desc: "Functions for creating and manipulating document embeddings."
   contents:
-  - bt_make_embedder
+  - bt_make_embedder_st
+  - bt_make_embedder_spacy
+  - bt_make_embedder_flair
+  - bt_make_embedder_openai
   - bt_do_embedding
   - bt_make_reducer_umap
   - bt_make_reducer_pca
@@ -60,17 +63,27 @@ reference:
 #   bg: "#8661c5"
 
 articles:
-- title: Main verbs
-  navbar: ~
+- title: vignettes
+  # navbar: ~
   contents:
   - modular_approach
   - manipulating-the-model
   - quick_start
   
+navbar:
+  structure:
+    left: [home, intro, reference, articles]
+    right: [search, github]
+  
 repo:
   url: 
-    home: https://aoiferyan-sc.github.io/BertopicR/
-    source: https://github.com/AoifeRyan-sc/BertopicR/tree/review_updates_12sep2023
+    home: https://github.com/AoifeRyan-sc/BertopicR
+    source: https://github.com/AoifeRyan-sc/BertopicR/tree/review_updates_12sep2023/
+    
+home:
+  links:
+  - text: Report an issue
+    href: https://github.com/jpcompartir/BertopicR/issues
     
 template:
   bootstrap: 5
@@ -80,4 +93,3 @@ template:
     pkgdown-nav-height: 100px
   params:
     search: true
-
