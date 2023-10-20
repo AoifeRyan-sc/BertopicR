@@ -96,7 +96,28 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># model using all default parameters</span></span></span>
+<span class="r-in"><span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">bt_compile_model</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># model with modular components already generated</span></span></span>
+<span class="r-in"><span><span class="co"># define embedding and reduction modules and pass to bt_compile_model</span></span></span>
+<span class="r-in"><span><span class="va">embedder</span> <span class="op">&lt;-</span> <span class="fu"><a href="bt_make_embedder_st.html">bt_make_embedder_st</a></span><span class="op">(</span><span class="st">"all-mpnet-base-v2"</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="va">reducer</span> <span class="op">&lt;-</span> <span class="fu"><a href="bt_make_reducer_umap.html">bt_make_reducer_umap</a></span><span class="op">(</span>n_components <span class="op">=</span> <span class="fl">10L</span>, n_neighbours <span class="op">=</span> <span class="fl">20L</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">bt_compile_model</span><span class="op">(</span>embedding_model <span class="op">=</span> <span class="va">embedder</span>, reduction_model <span class="op">=</span> <span class="va">reducer</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Perform document embedding and reduction external to bertopic model and pass empty models to bt_compile_model</span></span></span>
+<span class="r-in"><span><span class="va">embedder</span> <span class="op">&lt;-</span> <span class="fu"><a href="bt_make_embedder_st.html">bt_make_embedder_st</a></span><span class="op">(</span><span class="st">"all-mpnet-base-v2"</span><span class="op">)</span> <span class="co"># embedder</span></span></span>
+<span class="r-in"><span><span class="va">embeddings</span> <span class="op">&lt;-</span> <span class="fu"><a href="bt_do_embedding.html">bt_do_embedding</a></span><span class="op">(</span><span class="va">embedder</span>, <span class="va">docs</span>, accelerator <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="co"># embeddings</span></span></span>
+<span class="r-in"><span><span class="va">reducer</span> <span class="op">&lt;-</span> <span class="fu"><a href="bt_make_reducer_umap.html">bt_make_reducer_umap</a></span><span class="op">(</span>n_components <span class="op">=</span> <span class="fl">10L</span>, n_neighbours <span class="op">=</span> <span class="fl">20L</span><span class="op">)</span> <span class="co"># reducer</span></span></span>
+<span class="r-in"><span><span class="va">reduced_embeddings</span> <span class="op">&lt;-</span> <span class="fu"><a href="bt_do_reducing.html">bt_do_reducing</a></span><span class="op">(</span><span class="va">reducer</span>, <span class="va">embeddings</span><span class="op">)</span> <span class="co"># reduced embeddings</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># skip embedding and reduction step by passing empty models</span></span></span>
+<span class="r-in"><span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">bt_compile_model</span><span class="op">(</span>embedding_model <span class="op">=</span> <span class="fu"><a href="bt_empty_embedder.html">bt_empty_embedder</a></span><span class="op">(</span><span class="op">)</span>, reduction_model <span class="op">=</span> <span class="fu"><a href="bt_empty_reducer.html">bt_empty_reducer</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
