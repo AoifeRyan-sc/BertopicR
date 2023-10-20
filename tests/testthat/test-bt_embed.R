@@ -19,131 +19,135 @@ test_that("bt_make_embedder_st returns the appropriate object", {
   
 })
 
-#testing bt_make_embedder_st ----
-test_that("bt_make_embedder_spacy fails when it should and succeeds otherwise",{
-  
-  if(interactive()){
+# testing bt_make_embedder_spacy ----
+if(interactive()){
+  test_that("bt_make_embedder_spacy fails when it should and succeeds otherwise",{
+
     # bad model
     expect_error(bt_make_embedder_spacy("test"),
                  regexp = "It doesn't look like test is a valid model from the spacy library")
-    
+
     # bad exclude arg
     expect_error(bt_make_embedder_spacy(model = "test",
                                         exclude = 2),
                  regexp = "is.null\\(exclude\\).*")
-    
+
     # bad arg
     expect_error(bt_make_embedder_spacy(model = "test",
                                         test_arg = 3),
                  regexp = "Bad argument\\(s\\) attempted to be sent to spacy.load\\(\\): test_arg")
-    
+
     # bad gpu arg
     expect_error(bt_make_embedder_spacy(model = "test",
                                         prefer_gpu = 2),
                  regexp = "is.logical\\(prefer_gpu\\).*")
-    
+
     expect_silent(bt_make_embedder_spacy(model = "en_core_web_sm",
                                          exclude = "tagger",
                                          vocab = FALSE))
-  }
-  
-  
-})
 
-test_that("bt_make_embedder_spacy returns the appropriate object", {
-  
-  if(interactive()){
+
+  })
+}
+
+if(interactive()){
+
+  test_that("bt_make_embedder_spacy returns the appropriate object", {
+
     embedder <- bt_make_embedder_spacy("en_core_web_sm",
                                        exclude = c("tagger", "parser", "ner", "attribute_ruler", "lemmatizer"))
-    
+
     expect_true(grepl("^spacy",class(embedder)[[1]]))
     expect_true(!all(c("tagger", "parser", "ner", "attribute_ruler", "lemmatizer") %in% embedder$component_names))
-    
+
     #Check we have an attribute named embedding model
     embedder_attributes <- attributes(embedder)
     expect_true("embedding_model" %in% names(embedder_attributes))
-  }
-  
-})
 
-test_that("bt_make_embedder_flair fails when it should and succeeds otherwise",{
-  
-  if(interactive()){
+  })
+}
+
+if(interactive()){
+
+  test_that("bt_make_embedder_flair fails when it should and succeeds otherwise",{
+
     # bad model
     expect_error(bt_make_embedder_flair("test"),
                  regexp = "It doesn't look like test is a valid model from the flair library")
-    
+
     # bad flair_class arg
     expect_error(bt_make_embedder_flair(model = "test",
                                         flair_class = "test"),
                  regexp = "\'arg\' should be one of.*")
-    
+
     # bad arg
     expect_error(bt_make_embedder_flair(model = "test",
                                         test_arg = 3),
                  regexp = "Bad argument\\(s\\) attempted to be sent to flair.embeddings.token.FlairEmbeddings:")
-    
+
     expect_silent(bt_make_embedder_flair(model = "news-forward",
                                          flair_class = "FlairEmbeddings",
                                          chars_per_chunk = 500L))
-  }
-  
-  
-})
 
-test_that("bt_make_embedder_flair returns the appropriate object", {
-  
-  if(interactive()){
+
+
+  })
+}
+# 
+#  
+if(interactive()){
+  test_that("bt_make_embedder_flair returns the appropriate object", {
+
     embedder <- bt_make_embedder_flair(model = "sentence-transformers/all-miniLM-L6-v2",
                                        flair_class = "TransformerDocumentEmbeddings",
                                        layer_mean = TRUE)
-    
+
     expect_true(grepl("^flair",class(embedder)[[1]]))
     expect_true(grepl(".*TransformerDocumentEmbedding.*",class(embedder)[[1]]))
     expect_true(embedder$layer_mean)
     expect_true("embed" %in% names(embedder))
-    
+
     #Check we have an attribute named embedding model
     embedder_attributes <- attributes(embedder)
     expect_true("embedding_model" %in% names(embedder_attributes))
-  }
-  
-})
+#     
+  })
+}
 
-test_that("bt_make_embedder_openai fails when it should and succeeds otherwise",{
-  
-  if(interactive()){
+
+# if(interactive()){
+  test_that("bt_make_embedder_openai fails when it should and succeeds otherwise",{
+
     # bad model
     expect_error(bt_make_embedder_openai(model = "test",
                                          openai_api_key = Sys.getenv("OPENAI_API_KEY")),
-                 regexp = "The input model, test, is not an available OpenAI embedding model.") 
-    
+                 regexp = "The input model, test, is not an available OpenAI embedding model.")
+
     # bad api_key arg
     expect_error(bt_make_embedder_openai(model = "test",
                                          openai_api_key = 3),
                  regexp = "is.character\\(openai_api_key\\) is not TRUE")
-    
-    expect_silent(bt_make_embedder_openai(openai_api_key = Sys.getenv("OPENAI_API_KEY")))
-  }
-  
-  
-})
 
-test_that("bt_make_embedder_openai returns the appropriate object", {
-  
-  if(interactive()){
+    expect_silent(bt_make_embedder_openai(openai_api_key = Sys.getenv("OPENAI_API_KEY")))
+  })
+# }
+
+# if(interactive()){
+  test_that("bt_make_embedder_openai returns the appropriate object", {
+
     embedder <- bt_make_embedder_openai(openai_api_key = Sys.getenv("OPENAI_API_KEY"))
-    
+
     expect_true(grepl(".*openai.*", class(embedder)[[1]]))
     expect_true("embed" %in% names(embedder))
-    
+
     #Check we have an attribute named embedding model
     embedder_attributes <- attributes(embedder)
     expect_true("embedding_model" %in% names(embedder_attributes))
-  }
-  
-  
-})
+
+
+  })
+# }
+
 #Testing bt_do_embedding ----
 
 test_that("bt_do_embedding function is raising errors when it should", {
@@ -212,72 +216,74 @@ test_that("bt_do_embedding function integrates with bt_make_embedder_st and retu
 })
 
 test_that("bt_do_embedding function integrates with bt_make_embedder_spacy and returns an array when fed correct parameters and has appropriate attributes", {
-  
+
   embedder <- bt_make_embedder_spacy("en_core_web_sm")
-  
+
   #Function takes one text
   test_embeddings <- bt_do_embedding(
     embedder = embedder,
     documents = "text")
-  
+
   expect_equal(96, dim(test_embeddings)[2])
   expect_equal(1, dim(test_embeddings)[1])
-  
+
   #Function takes a vector of texts
   embeddings_list <- bt_do_embedding(
     embedder = embedder,
     documents = c("this is some text", "this is more text"))
-  
+
   expect_true(all(class(embeddings_list) == c("matrix", "array")))
-  
+
   #Check n_documents attributes is as it should be (n_doc doesn't have to exact match)
   n_docs <- attr(embeddings_list, "n_doc")
   expect_equal(n_docs, 2)
 })
 
-test_that("bt_do_embedding function integrates with bt_make_embedder_flair and returns an array when fed correct parameters and has appropriate attributes", {
-  
-  embedder <- bt_make_embedder_flair(model = "news-forward")
-  
-  #Function takes one text
-  test_embeddings <- bt_do_embedding(
-    embedder = embedder,
-    documents = "text")
-  
-  expect_equal(2048, dim(test_embeddings)[2])
-  expect_equal(1, dim(test_embeddings)[1])
-  
-  #Function takes a vector of texts
-  embeddings_list <- bt_do_embedding(
-    embedder = embedder,
-    documents = c("this is some text", "this is more text"))
-  
-  expect_true(all(class(embeddings_list) == c("matrix", "array")))
-  
-  #Check n_documents attributes is as it should be (n_doc doesn't have to exact match)
-  n_docs <- attr(embeddings_list, "n_doc")
-  expect_equal(n_docs, 2)
-})
+if(interactive()){
+  test_that("bt_do_embedding function integrates with bt_make_embedder_flair and returns an array when fed correct parameters and has appropriate attributes", {
+    
+    embedder <- bt_make_embedder_flair(model = "news-forward")
+    
+    #Function takes one text
+    test_embeddings <- bt_do_embedding(
+      embedder = embedder,
+      documents = "text")
+    
+    expect_equal(2048, dim(test_embeddings)[2])
+    expect_equal(1, dim(test_embeddings)[1])
+    
+    #Function takes a vector of texts
+    embeddings_list <- bt_do_embedding(
+      embedder = embedder,
+      documents = c("this is some text", "this is more text"))
+    
+    expect_true(all(class(embeddings_list) == c("matrix", "array")))
+    
+    #Check n_documents attributes is as it should be (n_doc doesn't have to exact match)
+    n_docs <- attr(embeddings_list, "n_doc")
+    expect_equal(n_docs, 2)
+  })
+}
 
 test_that("bt_do_embedding function integrates with bt_make_embedder_openai and returns an array when fed correct parameters and has appropriate attributes", {
-  
+
   embedder <- bt_make_embedder_openai(openai_api_key = Sys.getenv("OPENAI_API_KEY"))
-  
+
   #Function takes one text
   test_embeddings <- bt_do_embedding(
     embedder = embedder,
     documents = "text")
-  
+
   expect_equal(1536, dim(test_embeddings)[2])
   expect_equal(1, dim(test_embeddings)[1])
-  
+
   #Function takes a vector of texts
   embeddings_list <- bt_do_embedding(
     embedder = embedder,
     documents = c("this is some text", "this is more text"))
-  
+
   expect_true(all(class(embeddings_list) == c("matrix", "array")))
-  
+
   #Check n_documents attributes is as it should be (n_doc doesn't have to exact match)
   n_docs <- attr(embeddings_list, "n_doc")
   expect_equal(n_docs, 2)

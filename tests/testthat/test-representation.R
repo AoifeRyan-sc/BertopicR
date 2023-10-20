@@ -137,28 +137,28 @@ test_that("bt_representation_openai errors on bad input", {
   #              "Bad argument\\(s\\) attempted to be sent to OpenAI\\(\\): test_input")
 })
 
-test_that("bt_representation_openai returns correct output on correct input", {
+if(interactive()){
+  test_that("bt_representation_openai returns correct output on correct input", {
+      
+      bt <- reticulate::import("bertopic")
+      docs <- stringr::sentences[1:10]
+      embeddings <- array(runif(3840), dim = c(10,384))
+      model <- bt$BERTopic(embedding_model = bt_empty_embedder(),
+                           umap_model = bt_empty_reducer())$fit(docs, embeddings)
+      nr_topics <- model$get_topic_info() %>% nrow()
+      
+      representation_openai <- bt_representation_openai(fitted_model = model,
+                                                        documents = docs,
+                                                        api_key = Sys.getenv("OPENAI_API_KEY")
+      )
+      
+      expect_true("-1" %in% names(representation_openai))
+      expect_equal(nr_topics, length(representation_openai))
+      expect_true(is.character(unlist(representation_openai)))
   
-  if(interactive()){
     
-    bt <- reticulate::import("bertopic")
-    docs <- stringr::sentences[1:10]
-    embeddings <- array(runif(3840), dim = c(10,384))
-    model <- bt$BERTopic(embedding_model = bt_empty_embedder(),
-                         umap_model = bt_empty_reducer())$fit(docs, embeddings)
-    nr_topics <- model$get_topic_info() %>% nrow()
-    
-    representation_openai <- bt_representation_openai(fitted_model = model,
-                                                      documents = docs,
-                                                      api_key = Sys.getenv("OPENAI_API_KEY")
-    )
-    
-    expect_true("-1" %in% names(representation_openai))
-    expect_equal(nr_topics, length(representation_openai))
-    expect_true(is.character(unlist(representation_openai)))
-  }
-  
-})
+  })
+}
 
 test_that("bt_representation_hf errors on bad input", {
   

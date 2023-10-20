@@ -100,26 +100,28 @@ test_that("bt_do_reducing accepts an array or a data frame as embeddings", {
   expect_silent(bt_do_reducing(reducer_truncated_svd, my_df))
 })
 
-#Integration test with bt_embed
-test_that("bt_embed and bt_reducer work together",{
+if(interactive()){
 
-  if(interactive()){
+#Integration test with bt_embed
+  test_that("bt_embed and bt_reducer work together",{
+  
     documents <- bert_example_data %>%
     janitor::clean_names() %>%
     dplyr::filter(!is.na(message)) %>%
     head(10) %>%
     dplyr::pull(message)
-  
-  embedder <- bt_make_embedder_st("all-minilm-l6-v2")
-  embeddings <- bt_do_embedding(embedder = embedder, documents = documents)
-  reducer <- bt_make_reducer_umap( n_neighbours = 2L, verbose = FALSE)
-  reducer_pca <- bt_make_reducer_pca(n_components = 10)
-  reduced <- bt_do_reducing(reducer = reducer, embeddings = embeddings )
-  reduced_pca <- bt_do_reducing(reducer = reducer_pca, embeddings = embeddings)
-  
-  expect_true(attributes(reduced)[["reduced"]])
-  expect_equal(attributes(reduced)[["original_dim"]], c(10, 384))
-  expect_true(attributes(reduced_pca)[["reduced"]])
-  expect_equal(attributes(reduced_pca)[["original_dim"]], c(10, 384))}
-  
-})
+    
+    embedder <- bt_make_embedder_st("all-minilm-l6-v2")
+    embeddings <- bt_do_embedding(embedder = embedder, documents = documents)
+    reducer <- bt_make_reducer_umap( n_neighbours = 2L, verbose = FALSE)
+    reducer_pca <- bt_make_reducer_pca(n_components = 10)
+    reduced <- bt_do_reducing(reducer = reducer, embeddings = embeddings )
+    reduced_pca <- bt_do_reducing(reducer = reducer_pca, embeddings = embeddings)
+    
+    expect_true(attributes(reduced)[["reduced"]])
+    expect_equal(attributes(reduced)[["original_dim"]], c(10, 384))
+    expect_true(attributes(reduced_pca)[["reduced"]])
+    expect_equal(attributes(reduced_pca)[["original_dim"]], c(10, 384))
+    
+  })
+}
