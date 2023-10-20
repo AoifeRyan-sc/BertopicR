@@ -115,7 +115,7 @@ if(interactive()){
 }
 
 
-# if(interactive()){
+if(interactive()){
   test_that("bt_make_embedder_openai fails when it should and succeeds otherwise",{
 
     # bad model
@@ -130,9 +130,9 @@ if(interactive()){
 
     expect_silent(bt_make_embedder_openai(openai_api_key = Sys.getenv("OPENAI_API_KEY")))
   })
-# }
+}
 
-# if(interactive()){
+if(interactive()){
   test_that("bt_make_embedder_openai returns the appropriate object", {
 
     embedder <- bt_make_embedder_openai(openai_api_key = Sys.getenv("OPENAI_API_KEY"))
@@ -146,7 +146,7 @@ if(interactive()){
 
 
   })
-# }
+}
 
 #Testing bt_do_embedding ----
 
@@ -265,29 +265,32 @@ if(interactive()){
   })
 }
 
-test_that("bt_do_embedding function integrates with bt_make_embedder_openai and returns an array when fed correct parameters and has appropriate attributes", {
+if(interactive()){
+  test_that("bt_do_embedding function integrates with bt_make_embedder_openai and returns an array when fed correct parameters and has appropriate attributes", {
+    
+    embedder <- bt_make_embedder_openai(openai_api_key = Sys.getenv("OPENAI_API_KEY"))
+    
+    #Function takes one text
+    test_embeddings <- bt_do_embedding(
+      embedder = embedder,
+      documents = "text")
+    
+    expect_equal(1536, dim(test_embeddings)[2])
+    expect_equal(1, dim(test_embeddings)[1])
+    
+    #Function takes a vector of texts
+    embeddings_list <- bt_do_embedding(
+      embedder = embedder,
+      documents = c("this is some text", "this is more text"))
+    
+    expect_true(all(class(embeddings_list) == c("matrix", "array")))
+    
+    #Check n_documents attributes is as it should be (n_doc doesn't have to exact match)
+    n_docs <- attr(embeddings_list, "n_doc")
+    expect_equal(n_docs, 2)
+  })
+}
 
-  embedder <- bt_make_embedder_openai(openai_api_key = Sys.getenv("OPENAI_API_KEY"))
-
-  #Function takes one text
-  test_embeddings <- bt_do_embedding(
-    embedder = embedder,
-    documents = "text")
-
-  expect_equal(1536, dim(test_embeddings)[2])
-  expect_equal(1, dim(test_embeddings)[1])
-
-  #Function takes a vector of texts
-  embeddings_list <- bt_do_embedding(
-    embedder = embedder,
-    documents = c("this is some text", "this is more text"))
-
-  expect_true(all(class(embeddings_list) == c("matrix", "array")))
-
-  #Check n_documents attributes is as it should be (n_doc doesn't have to exact match)
-  n_docs <- attr(embeddings_list, "n_doc")
-  expect_equal(n_docs, 2)
-})
 
 test_that("embedding_model attribute persists when it should and doesn't break stuff when it doesn't",{
   embedder <- bt_make_embedder_st("all-minilm-l6-v2")
