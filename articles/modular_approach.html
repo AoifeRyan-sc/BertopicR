@@ -215,11 +215,11 @@ to non-Euclidean Spaces</a> for alternatives.</p>
 <span>  <span class="va">reducer</span>, embeddings <span class="op">=</span> <span class="va">embeddings</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; UMAP(low_memory=False, min_dist=0, n_components=5, n_neighbors=10, random_state=42, verbose=True)</span></span>
-<span><span class="co">#&gt; Mon Oct 23 14:56:37 2023 Construct fuzzy simplicial set</span></span>
-<span><span class="co">#&gt; Mon Oct 23 14:56:37 2023 Finding Nearest Neighbors</span></span>
-<span><span class="co">#&gt; Mon Oct 23 14:56:40 2023 Finished Nearest Neighbor Search</span></span>
-<span><span class="co">#&gt; Mon Oct 23 14:56:43 2023 Construct embedding</span></span>
-<span><span class="co">#&gt; Mon Oct 23 14:56:45 2023 Finished embedding</span></span>
+<span><span class="co">#&gt; Mon Oct 23 15:32:09 2023 Construct fuzzy simplicial set</span></span>
+<span><span class="co">#&gt; Mon Oct 23 15:32:09 2023 Finding Nearest Neighbors</span></span>
+<span><span class="co">#&gt; Mon Oct 23 15:32:11 2023 Finished Nearest Neighbor Search</span></span>
+<span><span class="co">#&gt; Mon Oct 23 15:32:13 2023 Construct embedding</span></span>
+<span><span class="co">#&gt; Mon Oct 23 15:32:14 2023 Finished embedding</span></span>
 <span></span>
 <span><span class="va">reduced_embeddings</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="op">]</span></span>
 <span><span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]      [,5]</span></span>
@@ -369,21 +369,21 @@ eclectic.</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cluster</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">sentence</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "the baby puts his right foot in his mouth."</span></span>
-<span><span class="co">#&gt; [2] "the young kid jumped the rusty gate."      </span></span>
-<span><span class="co">#&gt; [3] "the cleat sank deeply into the soft turf." </span></span>
-<span><span class="co">#&gt; [4] "see the cat glaring at the scared mouse."  </span></span>
-<span><span class="co">#&gt; [5] "the hog crawled under the high fence."</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "it takes a good trap to capture a bear." </span></span>
+<span><span class="co">#&gt; [2] "the hog crawled under the high fence."   </span></span>
+<span><span class="co">#&gt; [3] "the young kid jumped the rusty gate."    </span></span>
+<span><span class="co">#&gt; [4] "it caught its hind paw in a rusty trap." </span></span>
+<span><span class="co">#&gt; [5] "see the cat glaring at the scared mouse."</span></span></code></pre></div>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cluster</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">sentence</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "the plant grew large and green in the window."</span></span>
-<span><span class="co">#&gt; [2] "the flint sputtered and lit a pine torch."    </span></span>
-<span><span class="co">#&gt; [3] "they took the axe and the saw to the forest." </span></span>
-<span><span class="co">#&gt; [4] "eight miles of woodland burned to waste."     </span></span>
-<span><span class="co">#&gt; [5] "the lamp shone with a steady green flame."</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "the bright lanterns were gay on the dark lawn."</span></span>
+<span><span class="co">#&gt; [2] "the flint sputtered and lit a pine torch."     </span></span>
+<span><span class="co">#&gt; [3] "the brown house was on fire to the attic."     </span></span>
+<span><span class="co">#&gt; [4] "the small red neon lamp went out."             </span></span>
+<span><span class="co">#&gt; [5] "the heap of fallen leaves was set on fire."</span></span></code></pre></div>
 <p>The more clusters we look at, the more difficult it will become to
 figure out what’s happening…</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -391,11 +391,11 @@ figure out what’s happening…</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cluster</span> <span class="op">==</span> <span class="fl">2</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">sentence</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "no doubt about the way the wind blows." </span></span>
-<span><span class="co">#&gt; [2] "the fly made its way along the wall."   </span></span>
-<span><span class="co">#&gt; [3] "a blue crane is a tall wading bird."    </span></span>
-<span><span class="co">#&gt; [4] "those thistles bend in a high wind."    </span></span>
-<span><span class="co">#&gt; [5] "the leaf drifts along with a slow spin."</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "the vane on top of the pole revolved in the wind."</span></span>
+<span><span class="co">#&gt; [2] "the pennant waved when the wind blew."            </span></span>
+<span><span class="co">#&gt; [3] "pink clouds floated with the breeze."             </span></span>
+<span><span class="co">#&gt; [4] "a wisp of cloud hung in the blue air."            </span></span>
+<span><span class="co">#&gt; [5] "the fan whirled its round blades softly."</span></span></code></pre></div>
 <p>Inspecting each of these clusters and trying to figure out what each
 cluster means and how they inter-relate would soon become intractable
 for humans. Thankfully, within BERTopic there are quantitative methods
