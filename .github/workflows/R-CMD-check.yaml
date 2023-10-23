@@ -57,7 +57,8 @@ jobs:
             
           Sys.setenv("OPENAI_API_KEY" = '$SECRET_OPENAI_API_KEY')
         
-        env: SECRET_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        env: 
+          SECRET_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - uses: r-lib/actions/check-r-package@v2
         with:
