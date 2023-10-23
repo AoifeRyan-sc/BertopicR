@@ -172,7 +172,7 @@ test_that("bt_do_embedding function is raising errors when it should", {
     bt_do_embedding(
       embedder = embedder,
       documents = "text",
-      accelerator = "mps",
+      accelerator = NULL,
       progress_bar = 1L),
     regexp = "is.logical\\(progress_bar\\) is not TRUE"
   )
@@ -187,7 +187,7 @@ test_that("bt_do_embedding function integrates with bt_make_embedder_st and retu
   test_embeddings <- bt_do_embedding(
     embedder = embedder,
     documents = "text",
-    accelerator = "mps",
+    accelerator = NULL,
     progress_bar = TRUE)
   
   expect_equal(384, dim(test_embeddings))

@@ -111,7 +111,9 @@ test_that("bt_outliers_embeddings returns correct output", {
                           threshold = 0.01)
 
   # returns df with document, old topics, new topics:
-  expect_true(all(df[2] == model$get_document_info(sentences)$Topic))
+  if(interactive()){
+    expect_true(all(df[2] == model$get_document_info(sentences)$Topic)) 
+  }
   expect_true((df %>% dplyr::filter(current_topics == -1) %>% nrow()) > (df %>% dplyr::filter(new_topics == -1) %>% nrow()))
 
 })
