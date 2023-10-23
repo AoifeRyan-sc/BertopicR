@@ -31,7 +31,7 @@ library(ggplot2)
 
 ```{r, echo = FALSE, message = FALSE}
 sentences <- stringr::sentences
-embedder <- BertopicR::bt_make_embedder_st("all-mpnet-base-v2")
+embedder <- BertopicR::bt_make_embedder_st("all-miniLM-L6-v2")
 embeddings <- bt_do_embedding(embedder, sentences, accelerator = NULL)
 reducer <- bt_make_reducer_umap(
   n_neighbours = 10L,

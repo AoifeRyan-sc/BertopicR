@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' embedder <- bt_make_embedder_st("all-mpnet-base-v2")
+#' embedder <- bt_make_embedder_st("all-miniLM-L6-v2")
 #'
 #' embedder <- bt_make_embedder_st("aLL-minilm-l6-v2")
 bt_make_embedder_st <- function(model) {
@@ -16,7 +16,7 @@ bt_make_embedder_st <- function(model) {
   #Can leave space for a second argument, which is model_source and then use switch() to allow for embedding models other than sentence_transformers if the need arises.
   
   if(!is.character(model)){
-    stop("'model' should be a string of text e.g. 'all-mpnet-base-v2")
+    stop("'model' should be a string of text e.g. 'all-miniLM-L6-v2")
   }
   
   #Import sentence transformers to embed documents. In the future we might want to use an argument + switch to allow the user to use other platforms for embeddings.

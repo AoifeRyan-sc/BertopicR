@@ -22,12 +22,12 @@
 #' 
 #' # model with modular components already generated
 #' # define embedding and reduction modules and pass to bt_compile_model
-#' embedder <- bt_make_embedder_st("all-mpnet-base-v2") 
+#' embedder <- bt_make_embedder_st("all-miniLM-L6-v2") 
 #' reducer <- bt_make_reducer_umap(n_components = 10L, n_neighbours = 20L)
 #' model <- bt_compile_model(embedding_model = embedder, reduction_model = reducer)
 #'
 #' # Perform document embedding and reduction external to bertopic model and pass empty models to bt_compile_model
-#' embedder <- bt_make_embedder_st("all-mpnet-base-v2") # embedder
+#' embedder <- bt_make_embedder_st("all-miniLM-L6-v2") # embedder
 #' embeddings <- bt_do_embedding(embedder, docs, accelerator = NULL) # embeddings
 #' reducer <- bt_make_reducer_umap(n_components = 10L, n_neighbours = 20L) # reducer
 #' reduced_embeddings <- bt_do_reducing(reducer, embeddings) # reduced embeddings
@@ -64,8 +64,8 @@ bt_compile_model <- function(..., embedding_model = NULL, reduction_model = NULL
 
   #Provide a default embedding model for: Since MMR is using word embeddings to diversify the topic representations, it is necessary to pass the embedding model to BERTopic if you are using pre-computed embeddings:"
   if(is.null(embedding_model)){
-    embedding_model <- bt_make_embedder_st(model = "all-mpnet-base-v2")
-    message("\nNo embedding model provided, defaulting to 'all-mpnet-base-v2' model as embedder.")
+    embedding_model <- bt_make_embedder_st(model = "all-miniLM-L6-v2")
+    message("\nNo embedding model provided, defaulting to 'all-miniLM-L6-v2' model as embedder.")
     }
 
   #If no UMAP model given, provide empty
