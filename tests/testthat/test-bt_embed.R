@@ -115,7 +115,7 @@ if(interactive()){
 }
 
 
-if(interactive()){
+# if(interactive()){
   test_that("bt_make_embedder_openai fails when it should and succeeds otherwise",{
 
     # bad model
@@ -130,9 +130,9 @@ if(interactive()){
 
     expect_silent(bt_make_embedder_openai(openai_api_key = Sys.getenv("OPENAI_API_KEY")))
   })
-}
+# }
 
-if(interactive()){
+# if(interactive()){
   test_that("bt_make_embedder_openai returns the appropriate object", {
 
     embedder <- bt_make_embedder_openai(openai_api_key = Sys.getenv("OPENAI_API_KEY"))
@@ -146,7 +146,7 @@ if(interactive()){
 
 
   })
-}
+# }
 
 #Testing bt_do_embedding ----
 
@@ -265,7 +265,7 @@ if(interactive()){
   })
 }
 
-if(interactive()){
+# if(interactive()){
   test_that("bt_do_embedding function integrates with bt_make_embedder_openai and returns an array when fed correct parameters and has appropriate attributes", {
     
     embedder <- bt_make_embedder_openai(openai_api_key = Sys.getenv("OPENAI_API_KEY"))
@@ -289,7 +289,7 @@ if(interactive()){
     n_docs <- attr(embeddings_list, "n_doc")
     expect_equal(n_docs, 2)
   })
-}
+# }
 
 
 test_that("embedding_model attribute persists when it should and doesn't break stuff when it doesn't",{
