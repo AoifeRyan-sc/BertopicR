@@ -55,6 +55,11 @@ jobs:
             paste0("RETICULATE_PYTHON=", reticulate::virtualenv_python(conda_path)),
             Sys.getenv("GITHUB_ENV"))
 
+      - name: Set OPENAI_API_KEY
+        run: echo "OPENAI_API_KEY=$OPENAI_API_KEY" >> $GITHUB_ENV
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
       - uses: r-lib/actions/check-r-package@v2
         with:
           args: 'c("--no-manual")'
