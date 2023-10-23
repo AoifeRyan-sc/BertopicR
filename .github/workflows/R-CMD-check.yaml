@@ -35,11 +35,6 @@ jobs:
           extra-packages: rcmdcheck remotes reticulate
           cache-version: 3
           upgrade: 'TRUE'
-          
-       - name: Setup Environment
-        run: echo "OPENAI_API_KEY=$OPENAI_API_KEY" >> $GITHUB_ENV
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: setup env
         shell: Rscript {0}
@@ -59,9 +54,6 @@ jobs:
           writeLines(
             paste0("RETICULATE_PYTHON=", reticulate::virtualenv_python(conda_path)),
             Sys.getenv("GITHUB_ENV"))
-        
-        env: 
-          SECRET_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - uses: r-lib/actions/check-r-package@v2
         with:
