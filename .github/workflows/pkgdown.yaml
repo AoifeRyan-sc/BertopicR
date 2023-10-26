@@ -54,6 +54,7 @@ jobs:
             ${{ runner.os }}-conda-
             
       - name: setup env
+        if: steps.myCacheStep.outputs.cache-hit != 'true'
         shell: Rscript {0}
         run: |
           reticulate::install_miniconda()
