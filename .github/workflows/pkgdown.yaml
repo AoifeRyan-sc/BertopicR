@@ -3,8 +3,8 @@
 on:
   push:
     branches: [main, master, rebase-commits]
-  # pull_request:
-  #   branches: [main, master]
+  pull_request:
+    branches: [main, master]
   release:
     types: [published]
   workflow_dispatch:
@@ -15,10 +15,8 @@ jobs:
   pkgdown:
     runs-on: MacOS-latest
     # Only restrict concurrency for non-PR jobs
-    # concurrency:
-    #   group: pkgdown-${{ github.workflow }}-${{ github.ref }}
     concurrency:
-      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
+      group: pkgdown-${{ github.workflow }}-${{ github.ref }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     permissions:
