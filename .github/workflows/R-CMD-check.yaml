@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [main, master, rebase-commits]
+    branches: [main, master, try-caching-jobs]
   # pull_request:
   #   branches: [main, master]
   workflow_dispatch:
@@ -35,7 +35,17 @@ jobs:
           extra-packages: rcmdcheck remotes reticulate
           cache-version: 3
           upgrade: 'TRUE'
-
+          
+      - name: cache setup env
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-setup-env
+        with:
+          path: /Users/runner/Library/r-miniconda/envs/BertopicR
+          key: ${{ runner.os }}-conda-${{ hashFiles('**/environment.yml') }}
+          restore-keys: |
+            ${{ runner.os }}-conda-
+      
       - name: setup env
         shell: Rscript {0}
         run: |
