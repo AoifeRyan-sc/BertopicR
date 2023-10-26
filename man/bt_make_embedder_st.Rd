@@ -16,7 +16,7 @@ an embedding model, formed according to the model defined, that can be input to 
 Initially this function is built upon the \code{sentence_transformers} Python library, but it may be expanded to accept other frameworks. You should feed in your documents as a list. You can use hardware accelerators e.g. GPUs, to speed up computation.
 }
 \examples{
-embedder <- bt_make_embedder_st("all-mpnet-base-v2")
+embedder <- bt_make_embedder_st("all-miniLM-L6-v2")
 
 embedder <- bt_make_embedder_st("aLL-minilm-l6-v2")
 }
