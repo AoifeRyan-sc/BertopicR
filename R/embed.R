@@ -8,9 +8,11 @@
 #' @export
 #'
 #' @examples
+#' if(interactive()){
 #' embedder <- bt_make_embedder_st("all-miniLM-L6-v2")
 #'
 #' embedder <- bt_make_embedder_st("aLL-minilm-l6-v2")
+#' }
 bt_make_embedder_st <- function(model) {
   
   #Can leave space for a second argument, which is model_source and then use switch() to allow for embedding models other than sentence_transformers if the need arises.
@@ -245,12 +247,13 @@ bt_make_embedder_openai <- function(model = "text-embedding-ada-002",
 #' @export
 #' 
 #' @examples
+#' if(interactive()){
 #' docs <- c("i am", "a list of", "documents", "to be embedded")
 #' 
 #' embedder <- bt_make_embedder_st("aLL-minilm-l6-v2")
 #' 
 #' embeddings <- bt_do_embedding(embedder, docs, accelerator = NULL)
-#' 
+#' }
 bt_do_embedding <- function(embedder, documents, ..., accelerator = NULL, progress_bar = TRUE) {
   
   # update this to be compatible with compatible embedding models
@@ -367,54 +370,3 @@ bt_do_embedding <- function(embedder, documents, ..., accelerator = NULL, progre
   return(embeddings)
   
 }
-
-# do we need a bt_make_embedder_hf when we have st? Should I be using pipeline or different function to make the embedder ----
-#' Create an embedding model using the [hugging face library](https://huggingface.co/models)
-#'
-#' @param ... Additional arguments sent to transformers.pipeline()
-#' @param task The task defining the pipeline to be returned, this defaults to feature extraction.
-#' @param model The model used by the pipeline to make predictions
-#'
-#' @return a pipeline formed according to the task defined
-#' @export
-#'
-#' @examples
-#' # define task and use default model for that task
-#' embedder <- bt_make_embedder_hf(task = "feature-extraction")
-#' 
-#' # define model and use task specified for that model
-#' embedder <- bt_make_embedder_hf(model = "distilbert-base-cased")
-#' 
-#' # define task and model
-#' embedder <- bt_make_embedder_hf(task = "feature-extraction", model = "facebook/bart-base")
-#' 
-#' # define 
-# bt_make_embedder_hf <- function(..., task = "feature-extraction", model = NULL){
-#   # input argument validation
-#   if (is.null(model) & is.null(task)){
-#     stop("Either model or task input argument must be specified.")
-#   }
-#   
-#   stopifnot(is.null(task)| is.character(task),
-#             is.null(model) | is.character(model))
-#   
-#   dots <- rlang::list2(...) # extra inputs as list
-#   transformers <- reticulate::import("transformers") # import transformers library
-#   inspect <- reticulate::import("inspect") # import inspect to validate extra arguments
-#   empty_model <- transformers$pipeline # function to be used with no arguments
-#   available_args <- inspect$getfullargspec(empty_model)$args # arguments allowed
-#   
-#   if(any(!names(dots) %in% available_args)){
-#     bad_args <- names(dots)[!names(dots) %in% names(empty_model)] # non-applicable args
-#     stop(paste("Bad argument(s) attempted to be sent to transformers.pipeline():", bad_args, sep = ' '))
-#   }
-#   
-#   # end input validation
-#   
-#   pipeline <- transformers$pipeline(task = task,
-#                                     model = model,
-#                                     ...)
-#   
-#   return(pipeline)
-#   
-# }

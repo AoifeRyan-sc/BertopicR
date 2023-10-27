@@ -35,10 +35,11 @@ Initially this function is built upon the \code{sentence_transformers} Python li
 The function currently returns an object with two additional attributes: embedding_model, n_documents, they have been appended to the embeddings for extraction at later steps in the pipeline, e.g. when merging data frames later on it's important to check how many documents we entered.
 }
 \examples{
+if(interactive()){
 docs <- c("i am", "a list of", "documents", "to be embedded")
 
 embedder <- bt_make_embedder_st("aLL-minilm-l6-v2")
 
 embeddings <- bt_do_embedding(embedder, docs, accelerator = NULL)
-
+}
 }
