@@ -49,7 +49,7 @@ jobs:
         env:
           cache-name: cache-setup-env
         with:
-          path: /Users/runner/Library/r-miniconda/envs/BertopicR
+          path: /Users/runner/Library/r-miniconda/envs/BertopicR/bin/python
           key: ${{ runner.os }}-conda-${{ hashFiles('**/environment.yml') }}
           restore-keys: |
             ${{ runner.os }}-conda-
@@ -73,13 +73,12 @@ jobs:
           writeLines(
             paste0("RETICULATE_PYTHON=", reticulate::virtualenv_python(conda_path)),
             Sys.getenv("GITHUB_ENV"))
+        # remotes::install_local(".")  # install the package from the current repository
 
+      - name: Install BertopicR
+        run: |
           remotes::install_local(".")  # install the package from the current repository
-
-      # - name: Install BertopicR
-      #   run: |
-      #     remotes::install_local(".")  # install the package from the current repository
-      #   shell: Rscript {0}
+        shell: Rscript {0}
 
       - name: can env find conda_path?
         shell: Rscript {0}
