@@ -37,16 +37,18 @@ jobs:
           upgrade: 'TRUE'
           
       - uses: actions/cache@v3
+        id: myCacheStep
         env:
           cache-name: cache-setup-env
         with:
-          path: /Users/runner/Library/r-miniconda/envs/BertopicR
+          path: /Users/runner/Library/r-miniconda/envs/BertopicR/bin/python
           key: ${{ runner.os }}-conda-${{ hashFiles('**/environment.yml') }}
           restore-keys: |
             ${{ runner.os }}-conda-
 
       - name: setup env
         shell: Rscript {0}
+        if: steps.myCacheStep.outputs.cache-hit != 'true'
         run: |
           reticulate::install_miniconda()
 
