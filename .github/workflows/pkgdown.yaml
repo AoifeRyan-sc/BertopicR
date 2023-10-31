@@ -49,7 +49,7 @@ jobs:
         env:
           cache-name: cache-setup-env
         with:
-          path: /Users/runner/Library/r-miniconda/envs/BertopicR/bin/python
+          path: /Users/runner/Library/r-miniconda/envs/BertopicR
           key: ${{ runner.os }}-conda-${{ hashFiles('**/environment.yml') }}
           restore-keys: |
             ${{ runner.os }}-conda-
