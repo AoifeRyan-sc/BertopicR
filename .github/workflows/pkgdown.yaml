@@ -74,8 +74,6 @@ jobs:
         # if: steps.myCacheStep.outputs.cache-hit != 'true' # only run if there is a hit
         shell: Rscript {0}      
         run: |
-          env <- ${{ env.R_LIBS_USER }}
-          print(env)
           reticulate::py_list_packages()
 
       #     writeLines(
