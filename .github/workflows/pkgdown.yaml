@@ -53,8 +53,6 @@ jobs:
           key: ${{ runner.os }}-conda-${{ hashFiles('**/environment.yml') }}
           restore-keys: |
             ${{ runner.os }}-conda-
-          run: |
-           ls ${{ env.R_LIBS_USER }}
             
       - name: setup env
         if: steps.myCacheStep.outputs.cache-hit != 'true'
@@ -77,6 +75,10 @@ jobs:
             Sys.getenv("GITHUB_ENV"))
         # remotes::install_local(".")  # install the package from the current repository
 
+      - name: debug env
+        run: |
+           ls ${{ env.R_LIBS_USER }}
+           
       - name: Install BertopicR
         run: |
           remotes::install_local(".")  # install the package from the current repository
