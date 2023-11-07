@@ -75,9 +75,9 @@ jobs:
             Sys.getenv("GITHUB_ENV"))
         # remotes::install_local(".")  # install the package from the current repository
 
-      - name: debug env
-        run: |
-           ls Users/runner/Library/r-miniconda/envs/BertopicR
+      # - name: debug env
+      #   run: |
+      #      ls Users/runner/Library/r-miniconda/envs/BertopicR
            
       - name: Install BertopicR
         run: |
