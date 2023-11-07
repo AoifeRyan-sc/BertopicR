@@ -49,10 +49,12 @@ jobs:
         env:
           cache-name: cache-setup-env
         with:
-          path: /Users/runner/Library/r-miniconda/envs/BertopicR
+          path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-conda-${{ hashFiles('**/environment.yml') }}
           restore-keys: |
             ${{ runner.os }}-conda-
+          run: |
+           ls ${{ env.R_LIBS_USER }}
             
       - name: setup env
         if: steps.myCacheStep.outputs.cache-hit != 'true'
