@@ -42,14 +42,14 @@ jobs:
 
       - uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.config.python }}
+          python-version: '3.9'
           
       - uses: actions/cache@v3
         id: myCacheStep
         env:
           cache-name: cache-setup-env
         with:
-          path: ${{ env.R_LIBS_USER }}
+          path: Users/runner/Library/r-miniconda/envs/BertopicR
           key: ${{ runner.os }}-conda-${{ hashFiles('**/environment.yml') }}
           restore-keys: |
             ${{ runner.os }}-conda-
@@ -77,7 +77,7 @@ jobs:
 
       - name: debug env
         run: |
-           ls ${{ env.R_LIBS_USER }}
+           ls Users/runner/Library/r-miniconda/envs/BertopicR
            
       - name: Install BertopicR
         run: |
