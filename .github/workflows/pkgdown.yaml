@@ -80,12 +80,10 @@ jobs:
           remotes::install_local(".")  # install the package from the current repository
         shell: Rscript {0}
 
-      # - name: can env find conda_path?
-      #   shell: Rscript {0}
-      #   run: |
-      #     writeLines(
-      #       paste0("RETICULATE_PYTHON=", reticulate::virtualenv_python(conda_path)),
-      #       Sys.getenv("GITHUB_ENV"))
+      - name: check environment
+        shell: Rscript {0}      
+        run: |
+          reticulate::py_list_packages()
 
       - name: Build site
         run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
