@@ -41,7 +41,8 @@
   Sys.setenv(RETICULATE_PYTHON = python_path)
 
   #Load the conda env
-  reticulate::use_condaenv(condaenv = bertopicr_env, required = TRUE)
+  # reticulate::use_condaenv(condaenv = bertopicr_env, required = TRUE)
+  reticulate::use_virtualenv(virtualenv = bertopicr_env, required = TRUE)
 
   invisible()
 }
@@ -60,8 +61,8 @@ install_python_dependencies <- function(){
 
   #Taken from BERTOPIC setup.py
   #https://github.com/MaartenGr/BERTopic/blob/master/setup.py
-  # bertopic_0_15_0_deps <- c("bertopic==0.15.0", "numpy==1.24.3", "hdbscan==0.8.29", "umap-learn==0.5.3", "pandas==2.0.2", "scikit-learn==1.2.2", "pytorch==2.0.0","tqdm==4.65.0", "sentence-transformers==2.2.2","plotly==5.15.0", "openai==0.27.8")
-  bertopic_0_15_0_deps <- c("bertopic==0.15.0", "numpy==1.24.3", "hdbscan==0.8.29", "umap-learn==0.5.3", "pandas==2.0.2", "scikit-learn==1.2.2")
+  bertopic_0_15_0_deps <- c("bertopic==0.15.0", "numpy==1.24.3", "hdbscan==0.8.29", "umap-learn==0.5.3", "pandas==2.0.2", "scikit-learn==1.2.2", "pytorch==2.0.0","tqdm==4.65.0", "sentence-transformers==2.2.2","plotly==5.15.0", "openai==0.27.8")
+  # bertopic_0_15_0_deps <- c("bertopic==0.15.0", "numpy==1.24.3", "hdbscan==0.8.29", "umap-learn==0.5.3", "pandas==2.0.2", "scikit-learn==1.2.2")
                             # , "pytorch==2.0.0","tqdm==4.65.0", "sentence-transformers==2.2.2","plotly==5.15.0", "openai==0.27.8")
 
   reticulate::py_install(
