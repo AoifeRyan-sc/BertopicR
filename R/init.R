@@ -10,18 +10,21 @@
 
   #Try to use miniconda to
   result <- tryCatch(
-    {reticulate::use_miniconda(bertopicr_env, required = TRUE)},
+    # {reticulate::use_miniconda(bertopicr_env, required = TRUE)},
+    {reticulate::use_virtualenv(bertopicr_env, required = TRUE)},
     error = function(e) {e}
   )
   if ("error" %in% class(result)) {
-    if(stringr::str_detect(result$message, "Minicoda is not installed")){
-      stop(
-        paste0( result$message, "\nInstall Miniconda with `reticulate::install_miniconda()` and try again."))
-    }
-    if(stringr::str_detect(result$message, "Unable to locate conda environment")){
-      packageStartupMessage(paste0("\nCreating environment, ", bertopicr_env))
+  #   if(stringr::str_detect(result$message, "Minicoda is not installed")){
+  #     stop(
+  #       paste0( result$message, "\nInstall Miniconda with `reticulate::install_miniconda()` and try again."))
+  #   }
+    # if(stringr::str_detect(result$message, "Unable to locate conda environment")){
+    if(stringr::str_detect(result$message, "is not a Python virtualenv")){
+      packageStartupMessage(paste0("\nCreating virtual environment, ", bertopicr_env))
 
-      reticulate::conda_create(
+      # reticulate::conda_create(
+      reticulate::virtualenv_create(
         envname = bertopicr_env,
         conda = paste0(reticulate::miniconda_path(), "/condabin/conda")
       )
@@ -33,8 +36,9 @@
   }
 
   #Get correct Python path
-  python_path <- reticulate::conda_list()
-  python_path <- python_path[python_path["name"] == bertopicr_env, 2]
+  # python_path <- reticulate::conda_list()
+  python_path <- reticulate::virtualenv_list()
+  # python_path <- python_path[python_path["name"] == bertopicr_env, 2]
 
 
   #Set correct Python path for reticulate
@@ -42,7 +46,8 @@
 
   #Load the conda env
   # reticulate::use_condaenv(condaenv = bertopicr_env, required = TRUE)
-  reticulate::use_virtualenv(virtualenv = bertopicr_env, required = TRUE)
+  reticulate::virtualenv_create(envname = bertopicr_env, 
+                                python= '/usr/bin/python3')
 
   invisible()
 }
