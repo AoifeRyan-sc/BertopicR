@@ -42,12 +42,14 @@
 
 
   #Set correct Python path for reticulate
-  Sys.setenv(RETICULATE_PYTHON = python_path)
+  # Sys.setenv(RETICULATE_PYTHON = python_path)
+  # Sys.setenv(RETICULATE_PYTHON = paste0('/home/shiny/.virtualenvs/', VIRTUALENV_NAME, '/bin/python'))
+  Sys.setenv(RETICULATE_PYTHON = paste0('/Users/aoiferyan/.virtualenvs/', bertopicr_env, '/bin/python'))
 
   #Load the conda env
   # reticulate::use_condaenv(condaenv = bertopicr_env, required = TRUE)
-  reticulate::virtualenv_create(envname = bertopicr_env, 
-                                python= '/usr/bin/python3')
+  # reticulate::virtualenv_create(envname = bertopicr_env, 
+  #                               python= '/usr/bin/python3')
 
   invisible()
 }
