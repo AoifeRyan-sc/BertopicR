@@ -5,7 +5,7 @@
   bertopicr_env <- Sys.getenv("BERTOPICR_ENV")
 
   if(bertopicr_env == "") {
-    bertopicr_env <- "BertopicR"
+    bertopicr_env <- "BertopicR_test"
   }
 
   #Try to use miniconda to
@@ -25,8 +25,8 @@
 
       # reticulate::conda_create(
       reticulate::virtualenv_create(
-        envname = bertopicr_env,
-        conda = paste0(reticulate::miniconda_path(), "/condabin/conda")
+        envname = bertopicr_env
+        # conda = paste0(reticulate::miniconda_path(), "/condabin/conda")
       )
       packageStartupMessage(paste0("\nSuccessfully created environment ", bertopicr_env))
     }
@@ -37,7 +37,7 @@
 
   #Get correct Python path
   # python_path <- reticulate::conda_list()
-  python_path <- reticulate::virtualenv_list()
+  # python_path <- reticulate::virtualenv_list()
   # python_path <- python_path[python_path["name"] == bertopicr_env, 2]
 
 
@@ -63,18 +63,31 @@
 install_python_dependencies <- function(){
   bertopicr_env <- Sys.getenv("BERTOPICR_ENV")
   if(bertopicr_env == "") {
-    bertopicr_env <- "BertopicR"
+    bertopicr_env <- "BertopicR_test"
   }
 
   #Taken from BERTOPIC setup.py
   #https://github.com/MaartenGr/BERTopic/blob/master/setup.py
-  bertopic_0_15_0_deps <- c("bertopic==0.15.0", "numpy==1.24.3", "hdbscan==0.8.29", "umap-learn==0.5.3", "pandas==2.0.2", "scikit-learn==1.2.2", "pytorch==2.0.0","tqdm==4.65.0", "sentence-transformers==2.2.2","plotly==5.15.0", "openai==0.27.8")
+  bertopic_0_15_0_deps <- c("bertopic==0.15.0", "numpy==1.24.3", "hdbscan==0.8.31", "umap-learn>=0.5.3", "pandas==2.0.2", "scikit-learn==1.2.2", "torch>=1.4.0","tqdm==4.65.0",
+                            "sentence-transformers==2.2.2",
+                            "huggingface-hub==0.22.2",
+                            # "sentence-transformers>=0.4.1",
+                            "flair== 0.12.2", #"flair== 0.14.0",
+                            "plotly==5.15.0", "openai==0.27.8")
   # bertopic_0_15_0_deps <- c("bertopic==0.15.0", "numpy==1.24.3", "hdbscan==0.8.29", "umap-learn==0.5.3", "pandas==2.0.2", "scikit-learn==1.2.2")
                             # , "pytorch==2.0.0","tqdm==4.65.0", "sentence-transformers==2.2.2","plotly==5.15.0", "openai==0.27.8")
 
-  reticulate::py_install(
+  # reticulate::virtualenv_install(
+  reticulate::virtualenv_install(
     bertopicr_env,
     packages = bertopic_0_15_0_deps,
+  )
+  
+  
+  # I really don't know why but spacy is a little BRAT and throws a wheel building error if not installed separately
+  reticulate::virtualenv_install(
+    bertopicr_env,
+    packages ="spacy==3.6.1",
   )
 }
 
