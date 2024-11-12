@@ -9,7 +9,7 @@ test_that("bt_fit accepts a bertopic model, raises an error if not",{
 
   empty_model <- bertopic$BERTopic()
   expect_message(bt_fit_model(empty_model,documents, embeddings), 
-                 "The input model has bee fitted to the data and updated accordingly")
+                 "The input model has been fitted to the data and updated accordingly")
 })
 
 test_that("bt_fit_model raises an error if the dimensions of documents and (embeddings or topic_labels)  don't match up, and doesn't if they do", {

@@ -58,7 +58,7 @@ if(interactive()){
                                        exclude = c("tagger", "parser", "ner", "attribute_ruler", "lemmatizer"))
 
     expect_true(grepl("^spacy",class(embedder)[[1]]))
-    expect_true(!all(c("tagger", "parser", "ner", "attribute_ruler", "lemmatizer") %in% embedder$component_names))
+    expect_true(!all(c("tagger", "parser", "ner", "attribute_ruler", "lemmatizer") %in% as.character(embedder$component_names)))
 
     #Check we have an attribute named embedding model
     embedder_attributes <- attributes(embedder)

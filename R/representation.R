@@ -313,7 +313,7 @@ bt_representation_mmr <- function(fitted_model,
 #'
 #' @param fitted_model Output of bt_fit_model() or another bertopic topic model. The model must have been fitted to data.
 #' @param documents documents used to fit the fitted_model
-#' @param openai_model openai model to use. If using a gpt-3.5 model, set chat = TRUE
+#' @param openai_model openai model to use. If using a chat model, set chat = TRUE
 #' @param nr_repr_docs number of representative documents per topic to send to the openai model
 #' @param nr_samples Number of sample documents from which the representative docs are chosen
 #' @param chat set to TRUE if using gpt-3.5 model
@@ -328,10 +328,10 @@ bt_representation_mmr <- function(fitted_model,
 #' @usage bt_representation_openai(
 #' fitted_model,
 #' documents,
-#' openai_model = "text-ada-001",
+#' openai_model = "gpt-4o-mini",
 #' nr_repr_docs = 10,
 #' nr_samples = 500,
-#' chat = FALSE,
+#' chat = TRUE,
 #' api_key = "sk-",
 #' delay_in_seconds = NULL,
 #' prompt = NULL,
@@ -339,7 +339,7 @@ bt_representation_mmr <- function(fitted_model,
 #'
 bt_representation_openai <- function(fitted_model,
                                      documents,
-                                     openai_model = "text-ada-001",
+                                     openai_model ,
                                      nr_repr_docs = 10L,
                                      nr_samples = 500L,
                                      chat = FALSE,

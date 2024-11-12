@@ -99,24 +99,33 @@ test_that("bt_representation_openai errors on bad input", {
   model <- bt$BERTopic(embedding_model = bt_empty_embedder(),
                        umap_model = bt_empty_reducer())$fit(docs, embeddings)
   
-  expect_error(bt_representation_openai(documents = 5), "is.character.*documents.")
+  expect_error(bt_representation_openai(openai_model = "gpt",
+                                        documents = 5), "is.character.*documents.")
   expect_error(bt_representation_openai(documents = "test",
                                         openai_model = 6), "is.character.*openai_model.")
-  expect_error(bt_representation_openai(documents = "test",
+  expect_error(bt_representation_openai(openai_model = "gpt", 
+                                        documents = "test",
                                         chat = "test"), "is.logical.*chat")
-  expect_error(bt_representation_openai(documents = "test",
+  expect_error(bt_representation_openai(openai_model = "gpt", 
+                                        documents = "test",
                                         nr_repr_docs = "test"), "is.numeric.*nr_repr_docs")
-  expect_error(bt_representation_openai(documents = "test",
+  expect_error(bt_representation_openai(openai_model = "gpt", 
+                                        documents = "test",
                                         api_key = "test"), "str_detect.*api_key")
-  expect_error(bt_representation_openai(documents = "test",
+  expect_error(bt_representation_openai(openai_model = "gpt", 
+                                        documents = "test",
                                         delay_in_seconds = "test"), "is.numeric.*delay_in_seconds")
-  expect_error(bt_representation_openai(documents = "test",
+  expect_error(bt_representation_openai(openai_model = "gpt", 
+                                        documents = "test",
                                         prompt = 8), "is.character.*prompt")
-  expect_error(bt_representation_openai(documents = "test",
+  expect_error(bt_representation_openai(openai_model = "gpt", 
+                                        documents = "test",
                                         diversity = "test"), "is.numeric.*diversity")
-  expect_error(bt_representation_openai(fitted_model = "test",
+  expect_error(bt_representation_openai(openai_model = "gpt", 
+                                        fitted_model = "test",
                                         documents = "test"), "Model should be a BERTopic model")
-  expect_error(bt_representation_openai(fitted_model = unfitted_model,
+  expect_error(bt_representation_openai(openai_model = "gpt", 
+                                        fitted_model = unfitted_model,
                                         documents = "test"), "BERTopic model is not fitted, use bt_fit_model to fit.")
   expect_error(bt_representation_openai(fitted_model = model,
                                         openai_model = "gpt",
@@ -148,6 +157,8 @@ if(interactive()){
       nr_topics <- model$get_topic_info() %>% nrow()
       
       representation_openai <- bt_representation_openai(fitted_model = model,
+                                                        openai_model = "gpt-4o-mini",
+                                                        chat = TRUE,
                                                         documents = docs,
                                                         api_key = Sys.getenv("OPENAI_API_KEY")
       )
